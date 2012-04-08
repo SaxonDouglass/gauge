@@ -6,6 +6,7 @@ local manager = {
 }
 
 M.notify = function(event, data)
+  if not manager.events[event] then return end
   for _,callback in ipairs(manager.events[event]) do
     callback(data)
   end

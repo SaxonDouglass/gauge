@@ -11,7 +11,7 @@ M.new = function (arg)
     y = arg.y
   }
   
-  local object {
+  local object = {
     draw = function ()
       love.graphics.circle("fill", self.x, self.y, 16, 16)
     end,

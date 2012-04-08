@@ -1,8 +1,11 @@
+-- main.lua
+
 local sandbox = require "sandbox"
 
 local gauge = {}
 gauge.event = require "event"
 gauge.entity = require "entity"
+gauge.input = require "input"
 
 love.load = function ()
   sandbox.allow("gauge", gauge)
@@ -10,27 +13,16 @@ love.load = function ()
 end
 
 love.update = function (dt)
+  local input = gauge.input.update(dt)
+  if input then
+    gauge.event.notify("input", input)
+  end
+  
   gauge.entity.update(dt)
 end
 
 love.draw = function ()
   gauge.entity.draw()
-end
-
-love.mousepressed = function (x, y, button)
-
-end
-
-love.mousereleased = function (x, y, button)
-
-end
-
-love.keypressed = function (key, unicode)
-
-end
-
-love.keyreleased = function (key, unicode)
-
 end
 
 love.focus = function (f)
