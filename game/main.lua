@@ -1,11 +1,10 @@
 
 local context = gauge.input.context.new({active = true})
-context.map = function (raw_input, map_input)
-  if raw_input.keyboard.space then
-    map_input.actions["jump"] = true
-    raw_input.keyboard.space = nil
+context.map = function (raw_in, map_in)
+  if raw_in.key.down[" "] then
+    map_in.actions["jump"] = true
   end
-  return raw_input, map_input
+  return map_in
 end
 
 
