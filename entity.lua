@@ -9,6 +9,9 @@ local manager = {
 M.new = function (arg)
   local self = arg
   
+  self.width = self.width or 32
+  self.height = self.height or 32
+  
   local object = {}
   object.falling = true
   object.render = function ()
@@ -22,9 +25,9 @@ M.new = function (arg)
     self.position.y = self.position.y + dt*self.velocity.y
     local map = state.get().map
     if map then
-      local tile_indices = map.getTileIndices(self.position)
+      local tile_indices = map.getTileIndices({x = self.position.x + self.width/2, y = self.position.y + self.height})
       if map.getTileProperties(tile_indices).solid == true then
-        self.position.y = map.getTileBounds(tile_indices).top
+        self.position.y = map.getTileBounds(tile_indices).top - self.height
         self.velocity.y = 0
         self.acceleration.y = 0
         object.falling = false

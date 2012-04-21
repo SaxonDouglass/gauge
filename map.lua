@@ -70,9 +70,11 @@ M.new = function(arg)
   object.getTileProperties = function (arg)
     local tile_id = map.layers[1].data[arg.x][arg.y]
     local properties = {}
-    for k,v in pairs(map.tilesets[1].tiles[tile_id]) do
-      local f = assert(loadstring("return " .. v))
-      _,properties[k] = pcall(f)
+    if map.tilesets[1].tiles[tile_id] then
+      for k,v in pairs(map.tilesets[1].tiles[tile_id]) do
+        local f = assert(loadstring("return " .. v))
+        _,properties[k] = pcall(f)
+      end
     end
     return properties
   end
