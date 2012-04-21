@@ -18,7 +18,7 @@ M.new = function(arg)
   for _,tileset in ipairs(map.tilesets) do
     local tiles = {}
     for _,tile in ipairs(tileset.tiles) do
-      tiles[tile.id] = tile.properties
+      tiles[tile.id + 1] = tile.properties
     end
     tileset.tiles = tiles
   end
