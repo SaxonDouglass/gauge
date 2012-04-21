@@ -62,8 +62,8 @@ M.new = function(arg)
 
   -- getTileIndices(arg)
   object.getTileIndices = function (arg)
-    return {x = math.floor(arg.x / (map.tilesets[1].tilewidth * scale)),
-            y = math.floor(arg.y / (map.tilesets[1].tileheight * scale))}
+    return {x = math.ceil(arg.x / (map.tilesets[1].tilewidth * scale)),
+            y = math.ceil(arg.y / (map.tilesets[1].tileheight * scale))}
   end
 
   -- getTileProperties(arg)

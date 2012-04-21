@@ -9,14 +9,28 @@ local manager = {
 M.new = function (arg)
   local self = arg
   
-  self.width = self.width or 32
-  self.height = self.height or 32
+  self.width = self.width or 30
+  self.height = self.height or 30
+  
+  local collide = function (map, x1, y1, x2, y2)
+    local i1 = map.getTileIndices({x = x1, y = y1})
+    local i2 = map.getTileIndices({x = x2, y = y2})
+    for x=i1.x,i2.x do
+      for y=i1.y,i2.y do
+        if map.getTileProperties({x = x, y = y}).solid == true then
+          return true
+        end
+      end
+    end
+    return false
+  end
   
   local object = {}
   object.falling = true
   object.render = function ()
     love.graphics.setColor({0,255,0})
-    love.graphics.circle("fill", self.position.x, self.position.y, 16, 16)
+    love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
+    --love.graphics.circle("fill", self.position.x + self.width/2, self.position.y + self.height/2, self.width/2, 16)
   end
   object.update = function (dt)
     self.velocity.x = self.velocity.x + dt*self.acceleration.x
@@ -25,12 +39,33 @@ M.new = function (arg)
     self.position.y = self.position.y + dt*self.velocity.y
     local map = state.get().map
     if map then
-      local tile_indices = map.getTileIndices({x = self.position.x + self.width/2, y = self.position.y + self.height})
-      if map.getTileProperties(tile_indices).solid == true then
-        self.position.y = map.getTileBounds(tile_indices).top - self.height
-        self.velocity.y = 0
-        self.acceleration.y = 0
-        object.falling = false
+      -- Vertical collisions (slightly dodgy stuff here)
+      if self.velocity.y < 0 then
+        if collide(map, self.position.x + 0.1*self.width, self.position.y, self.position.x + 0.9*self.width, self.position.y) then
+          self.position.y = map.getTileBounds(map.getTileIndices(self.position)).bottom + 0.01*self.height
+          self.velocity.y = 0
+        end
+      elseif self.velocity.y > 0 then
+        if collide(map, self.position.x + 0.1*self.width, self.position.y + self.height, self.position.x + 0.9*self.width, self.position.y + self.height) then
+          self.position.y = map.getTileBounds(map.getTileIndices({x = self.position.x, y = self.position.y + self.height})).top - self.height
+          self.velocity.y = 0
+          object.falling = false
+        else
+          object.falling = true
+        end
+      end
+      
+      -- Horizontal collisions
+      if self.velocity.x < 0 then
+        if collide(map, self.position.x, self.position.y, self.position.x, self.position.y + self.height) then
+          self.position.x = map.getTileBounds(map.getTileIndices(self.position)).right
+          self.velocity.x = 0
+        end
+      elseif self.velocity.x > 0 then
+        if collide(map, self.position.x + self.width, self.position.y, self.position.x + self.width, self.position.y + self.height) then
+          self.position.x = map.getTileBounds(map.getTileIndices({x = self.position.x + self.width, y = self.position.y})).left - self.width
+          self.velocity.x = 0
+        end
       end
     end
   end
