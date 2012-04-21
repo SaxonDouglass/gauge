@@ -11,6 +11,7 @@ M.new = function (arg)
   local object = {}
   object.falling = true
   object.render = function ()
+    love.graphics.setColor({0,255,0})
     love.graphics.circle("fill", self.position.x, self.position.y, 16, 16)
   end
   object.update = function (dt)
@@ -18,11 +19,15 @@ M.new = function (arg)
     self.velocity.y = self.velocity.y + dt*self.acceleration.y
     self.position.x = self.position.x + dt*self.velocity.x
     self.position.y = self.position.y + dt*self.velocity.y
-    if self.position.y > 500 then
-      self.position.y = 500
-      self.velocity.y = 0
-      self.acceleration.y = 0
-      object.falling = false
+    local map = gauge.state.get().map
+    if map then
+      local tile_indices = map.worldToLocal(self.position)
+      if map.getTileProperties(tile_indices).solid == true then
+        self.position.y = map.getTileBounds(tile_indices).top
+        self.velocity.y = 0
+        self.acceleration.y = 0
+        object.falling = false
+      end
     end
   end
   object.position = function (arg)

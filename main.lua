@@ -23,6 +23,7 @@ love.load = function ()
   game_state.update = function (dt)
     gauge.entity.update(dt)
   end
+  game_state.map = map
   gauge.event.subscribe("input", function (input)
     if gauge.state.get() == game_state and
         input.actions.pause then

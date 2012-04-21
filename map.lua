@@ -68,6 +68,7 @@ M.new = function(arg)
   
   -- render()
   object.render = function ()
+    love.graphics.setColor({255,255,255})
     love.graphics.draw(batch,
       0, 0, -- x, y
       0, -- rotation
