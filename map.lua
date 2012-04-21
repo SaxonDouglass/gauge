@@ -66,6 +66,18 @@ M.new = function(arg)
     return map.tilesets[1].tile[tile_id] or {}
   end
   
+  -- worldToLocal(x, y)
+  object.worldToLocal = function (x, y)
+    return x / (map.tilesets[1].tilewidth * scale),
+      y / (map.tilesets[1].tileheight * scale)
+  end
+
+  -- localToWorld(x, y)
+  object.localToWorld = function (x, y)
+    return x * (map.tilesets[1].tilewidth * scale),
+      y * (map.tilesets[1].tileheight * scale)
+  end
+  
   -- render()
   object.render = function ()
     love.graphics.draw(batch,
