@@ -12,12 +12,12 @@ gauge.map = require "map"
 love.load = function ()
   local map = gauge.map.new({
     data = loadfile("test_level.lua"),
-    scale = 1
+    scale = 0.5
   })
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
   game_state.render = function ()
-    love.grapgics.translate(game_state.camera.x, game_state.camera.y)
+    love.graphics.translate(game_state.camera.x, game_state.camera.y)
     map.render()
     gauge.entity.render()
   end
