@@ -12,7 +12,7 @@ love.load = function ()
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
   game_state.render = function ()
-    gauge.entity.draw()
+    gauge.entity.render()
   end
   game_state.update = function (dt)
     gauge.entity.update(dt)
@@ -43,7 +43,7 @@ love.load = function ()
   end
 
   local untrusted_code = assert(loadfile("game/main.lua"))
-  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge})
+  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, log=print})
   trusted_code()
 end
 
