@@ -10,9 +10,11 @@ gauge.state = require "state"
 gauge.map = require "map"
 
 love.load = function ()
+  local map = gauge.map.new(loadfile("test_level.lua"))
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
   game_state.render = function ()
+    map.render()
     gauge.entity.render()
   end
   game_state.update = function (dt)
