@@ -1,4 +1,5 @@
 -- entity.lua
+local state = require "state"
 local M = {}
 
 local manager = {
@@ -19,9 +20,9 @@ M.new = function (arg)
     self.velocity.y = self.velocity.y + dt*self.acceleration.y
     self.position.x = self.position.x + dt*self.velocity.x
     self.position.y = self.position.y + dt*self.velocity.y
-    local map = gauge.state.get().map
+    local map = state.get().map
     if map then
-      local tile_indices = map.worldToLocal(self.position)
+      local tile_indices = map.getTileIndices(self.position)
       if map.getTileProperties(tile_indices).solid == true then
         self.position.y = map.getTileBounds(tile_indices).top
         self.velocity.y = 0
