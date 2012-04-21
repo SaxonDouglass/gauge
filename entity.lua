@@ -70,16 +70,19 @@ M.new = function (arg)
     end
   end
   object.position = function (arg)
+    arg = arg or {}
     self.position.x = arg.x or self.position.x
     self.position.y = arg.y or self.position.y
     return self.position
   end
   object.velocity = function (arg)
+    arg = arg or {}
     self.velocity.x = arg.x or self.velocity.x
     self.velocity.y = arg.y or self.velocity.y
     return self.velocity
   end
   object.acceleration = function (arg)
+    arg = arg or {}
     self.acceleration.x = arg.x or self.acceleration.x
     self.acceleration.y = arg.y or self.acceleration.y
     return self.acceleration
