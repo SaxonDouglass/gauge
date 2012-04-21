@@ -11,7 +11,7 @@ M.new = function(arg)
   -- map properties
   for k,v in pairs(map.properties) do
     local property = assert(loadstring(v))
-    _,map.properties[k] = pcall(property)
+    _,map.properties[k] = pcall("return " .. property)
   end
   
   -- tileset properties
@@ -69,7 +69,12 @@ M.new = function(arg)
   -- getTileProperties(arg)
   object.getTileProperties = function (arg)
     local tile_id = map.layers[1].data[arg.x][arg.y]
-    return map.tilesets[1].tiles[tile_id] or {}
+    local properties = {}
+    for k,v in pairs(map.tilesets[1].tiles[tile_id]) do
+      local f = assert(loadstring("return " .. v))
+      _,properties[k] = pcall(f)
+    end
+    return properties
   end
   
   -- getTileBounds(arg)
