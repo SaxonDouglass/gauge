@@ -60,25 +60,25 @@ M.new = function(arg)
     end
   end
 
-  -- getTileIndices(x, y)
-  object.getTileIndices = function (x, y)
-    return x / (map.tilesets[1].tilewidth * scale),
-      y / (map.tilesets[1].tileheight * scale)
+  -- getTileIndices(arg)
+  object.getTileIndices = function (arg)
+    return {x = arg.x / (map.tilesets[1].tilewidth * scale),
+      y = arg.y / (map.tilesets[1].tileheight * scale)}
   end
 
-  -- getTileProperties(x, y)
-  object.getTileProperties = function (x, y)
-    local tile_id = map.layers[1].data[x][y]
+  -- getTileProperties(arg)
+  object.getTileProperties = function (arg)
+    local tile_id = map.layers[1].data[arg.x][arg.y]
     return map.tilesets[1].tile[tile_id] or {}
   end
   
-  -- getTileBounds(x, y)
-  object.getTileBounds = function (x, y)
+  -- getTileBounds(arg)
+  object.getTileBounds = function (arg)
     return {
-      top = y * (map.tilesets[1].tileheight * scale),
-      left = x * (map.tilesets[1].tilewidth * scale),
-      bottom = (y + 1) * (map.tilesets[1].tileheight * scale),
-      right = (x + 1) * (map.tilesets[1].tilewidth * scale)
+      top = arg.y * (map.tilesets[1].tileheight * scale),
+      left = arg.x * (map.tilesets[1].tilewidth * scale),
+      bottom = (arg.y + 1) * (map.tilesets[1].tileheight * scale),
+      right = (arg.x + 1) * (map.tilesets[1].tilewidth * scale)
     }
   end
   
