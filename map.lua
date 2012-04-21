@@ -105,6 +105,13 @@ M.new = function(arg)
     )
   end
   
+  -- scale(s)
+  object.scale = function(s)
+    s = s or 1
+    scale = scale * s
+    return scale
+  end
+  
   return object
 end
 

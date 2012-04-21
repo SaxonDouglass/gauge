@@ -32,7 +32,7 @@ love.load = function ()
       x = 0,
       y = 0
     },
-    speed = 100,
+    speed = 0.02,
     max_distance = 150
   }
   gauge.state.push(game_state)

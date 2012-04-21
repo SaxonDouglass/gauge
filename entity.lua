@@ -91,6 +91,13 @@ M.new = function (arg)
     local hypotenuse = math.sqrt( math.pow(self.velocity.x,2) + math.pow(self.velocity.y,2) )
     return math.acos( self.velocity.x/hypotenuse )
   end
+  object.height = function ()
+    return self.height
+  end
+  object.width = function ()
+    return self.width
+  end
+  
   table.insert(manager.entities, object)
   
   return object
