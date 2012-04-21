@@ -17,7 +17,9 @@ love.load = function ()
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
   game_state.render = function ()
-    love.graphics.translate(game_state.camera.x, game_state.camera.y)
+    love.graphics.translate(
+      (love.graphics.getWidth() / 2) - game_state.camera.position.x,
+      (love.graphics.getHeight() / 2) - game_state.camera.position.y)
     map.render()
     gauge.entity.render()
   end
@@ -26,8 +28,12 @@ love.load = function ()
   end
   game_state.map = map
   game_state.camera = {
-    x = 0,
-    y = 0
+    position = {
+      x = 0,
+      y = 0
+    },
+    speed = 100,
+    max_distance = 150
   }
   gauge.state.push(game_state)
 
@@ -40,7 +46,7 @@ love.load = function ()
   end
 
   local untrusted_code = assert(loadfile("game/main.lua"))
-  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, print=print})
+  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, math=math, print=print})
   trusted_code()
 end
 
