@@ -80,10 +80,10 @@ M.new = function(arg)
   -- getTileBounds(arg)
   object.getTileBounds = function (arg)
     return {
-      top = arg.y * (map.tilesets[1].tileheight * scale),
-      left = arg.x * (map.tilesets[1].tilewidth * scale),
-      bottom = (arg.y + 1) * (map.tilesets[1].tileheight * scale),
-      right = (arg.x + 1) * (map.tilesets[1].tilewidth * scale)
+      top = (arg.y - 1) * (map.tilesets[1].tileheight * scale),
+      left = (arg.x - 1) * (map.tilesets[1].tilewidth * scale),
+      bottom = arg.y * (map.tilesets[1].tileheight * scale),
+      right = arg.x * (map.tilesets[1].tilewidth * scale)
     }
   end
   

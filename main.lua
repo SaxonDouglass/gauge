@@ -12,11 +12,12 @@ gauge.map = require "map"
 love.load = function ()
   local map = gauge.map.new({
     data = loadfile("test_level.lua"),
-    scale = 0.4
+    scale = 1
   })
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
   game_state.render = function ()
+    love.grapgics.translate(game_state.camera.x, game_state.camera.y)
     map.render()
     gauge.entity.render()
   end
@@ -24,21 +25,10 @@ love.load = function ()
     gauge.entity.update(dt)
   end
   game_state.map = map
-  gauge.event.subscribe("input", function (input)
-    if gauge.state.get() == game_state and
-        input.actions.pause then
-      print("pause")
-      gauge.state.push(pause_state)
-    end
-  end)
-  gauge.event.subscribe("input", function (input)
-    if gauge.state.get() == pause_state and
-        input.actions.pause then
-      print("unpause")
-      gauge.state.pop()
-    end
-  end)
-    
+  game_state.camera = {
+    x = 0,
+    y = 0
+  }
   gauge.state.push(game_state)
 
   local context = gauge.input.context.new({active = true})
