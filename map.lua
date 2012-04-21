@@ -24,7 +24,7 @@ M.new = function(arg)
   M.getTile = function (x, y)
     local index = x + (y * map.layers[0].width)
     local tile_id = map.layers[0].data[index]
-    return map.properties[tile_id] || {}
+    return map.properties[tile_id] or {}
   end
 end
 
