@@ -7,6 +7,7 @@ gauge.event = require "event"
 gauge.entity = require "entity"
 gauge.input = require "input"
 gauge.state = require "state"
+gauge.map = require "map"
 
 love.load = function ()
   local game_state = gauge.state.new()
