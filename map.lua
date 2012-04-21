@@ -68,6 +68,10 @@ M.new = function(arg)
 
   -- getTileProperties(arg)
   object.getTileProperties = function (arg)
+    if arg.x < 1 or arg.y < 1 or
+        arg.x > map.layers[1].width or arg.y > map.layers[1].height then
+      return { solid = true }
+    end
     local tile_id = map.layers[1].data[arg.x][arg.y]
     local properties = {}
     if map.tilesets[1].tiles[tile_id] then
