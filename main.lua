@@ -10,7 +10,10 @@ gauge.state = require "state"
 gauge.map = require "map"
 
 love.load = function ()
-  local map = gauge.map.new(loadfile("test_level.lua"))
+  local map = gauge.map.new({
+    data = loadfile("test_level.lua"),
+    scale = 0.4
+  })
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
   game_state.render = function ()
@@ -46,7 +49,7 @@ love.load = function ()
   end
 
   local untrusted_code = assert(loadfile("game/main.lua"))
-  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, log=print})
+  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, print=print})
   trusted_code()
 end
 

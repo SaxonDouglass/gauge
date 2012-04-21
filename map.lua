@@ -23,34 +23,46 @@ M.new = function(arg)
     tileset.tiles = tiles
   end
   
+  -- tile data
+  local data = {}
+  for x=1,map.layers[1].width do
+    data[x] = {}
+    for y=1,map.layers[1].height do
+      data[x][y] = map.layers[1].data[x + ((y - 1) * map.layers[1].width)]
+    end
+  end
+  map.layers[1].data = data
+  
   -- render info
   local tileset = {}
   tileset.image = love.graphics.newImage(map.tilesets[1].image)
   tileset.image:setFilter("nearest", "nearest")
   tileset.quads = {}
   local max_tiles = map.tilesets[1].tilewidth * map.tilesets[1].tileheight
+  local tiles_x = map.tilesets[1].imagewidth / map.tilesets[1].tilewidth
   for i=1,max_tiles do
     tileset.quads[i] = love.graphics.newQuad(
-      ((i - 1) % map.tilesets[1].tilewidth) * scale,
-      math.floor((i - 1) / map.tilesets[1].tilewidth) * scale,
-      scale, scale, map.tilesets[1].imagewidth,
+      ((i - 1) % tiles_x) * map.tilesets[1].tilewidth,
+      math.floor((i - 1) / tiles_x) * map.tilesets[1].tileheight,
+      map.tilesets[1].tilewidth, map.tilesets[1].tileheight, map.tilesets[1].imagewidth,
       map.tilesets[1].imageheight
     )
   end
-  local batch = love.graphics.newSpriteBatch(map.tilesets[1].image,
+  local batch = love.graphics.newSpriteBatch(tileset.image,
     map.width * map.height)
   batch:clear()
-  for x=1,map.width do
-      for y=1,map.height do
-          batch:addq(tileset.quads[map[x][y]],
-              (x-1)*tileset.size, (y-1)*tileset.size)
+  for x=1,map.layers[1].width do
+    for y=1,map.layers[1].height do
+      if map.layers[1].data[x][y] > 0 then
+        batch:addq(tileset.quads[map.layers[1].data[x][y]],
+          (x-1)*map.tilesets[1].tilewidth, (y-1)*map.tilesets[1].tilewidth)
       end
+    end
   end
 
   -- getTile(x, y)
   object.getTile = function (x, y)
-    local index = x + (y * map.layers[1].width)
-    local tile_id = map.layers[1].data[index]
+    local tile_id = map.layers[1].data[x][y]
     return map.tilesets[1].tile[tile_id] or {}
   end
   
