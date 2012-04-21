@@ -59,12 +59,12 @@ M.new = function (arg)
       if self.velocity.x < 0 then
         if collide(map, self.position.x, self.position.y, self.position.x, self.position.y + self.height) then
           self.position.x = map.getTileBounds(map.getTileIndices(self.position)).right
-          self.velocity.x = 0
+          --self.velocity.x = 0
         end
       elseif self.velocity.x > 0 then
         if collide(map, self.position.x + self.width, self.position.y, self.position.x + self.width, self.position.y + self.height) then
           self.position.x = map.getTileBounds(map.getTileIndices({x = self.position.x + self.width, y = self.position.y})).left - self.width
-          self.velocity.x = 0
+          --self.velocity.x = 0
         end
       end
     end
