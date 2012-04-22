@@ -51,6 +51,7 @@ M.new = function (arg)
   end
   
   local object = {}
+  object.type = arg.type
   object.falling = true
   object.delete = false
   if self.render then
@@ -132,9 +133,6 @@ M.new = function (arg)
     if self.update then
       self.update(object, self, dt)
     end
-  end
-  object.type = function ()
-    return self.type
   end
   -- object.scale = function (s)
   --   self.scale = self.scale*s
@@ -288,7 +286,7 @@ M.getList = function(filter)
   for _,entity in ipairs(manager.entities) do
     local match = true
     for k,v in pairs(filter) do
-      if not entity[k] == v then
+      if not (entity[k] == v) then
         match = false
         break
       end
