@@ -1,10 +1,12 @@
 -- entity.lua
 local state = require "state"
+local event = require "event"
 local M = {}
 
 local manager = {
   entities = {},
   types = {},
+  deleteQueue = {},
 }
 
 M.new = function (arg)
@@ -16,7 +18,6 @@ M.new = function (arg)
     velocity = {x = 0, y = 0},
     acceleration = {x = 0, y = 0},
     scale = 1,
-    scales = true,
   }
   
   -- Add type-specific properties and defaults
@@ -49,6 +50,7 @@ M.new = function (arg)
   
   local object = {}
   object.falling = true
+  object.delete = false
   if self.render then
     object.render = function () 
       self.render(object, self)
@@ -100,18 +102,19 @@ M.new = function (arg)
       self.update(object, self, dt)
     end
   end
+  object.type = function ()
+    return self.type
+  end
   object.scale = function (s)
-    if self.scales then
-      self.scale = self.scale*s
-      self.position.x = self.position.x*s
-      self.position.y = self.position.y*s
-      self.velocity.x = self.velocity.x*s
-      self.velocity.y = self.velocity.y*s
-      self.acceleration.x = self.acceleration.x*s
-      self.acceleration.y = self.acceleration.y*s
-      self.width = self.width*s
-      self.height = self.height*s
-    end
+    self.scale = self.scale*s
+    self.position.x = self.position.x*s
+    self.position.y = self.position.y*s
+    self.velocity.x = self.velocity.x*s
+    self.velocity.y = self.velocity.y*s
+    self.acceleration.x = self.acceleration.x*s
+    self.acceleration.y = self.acceleration.y*s
+    self.width = self.width*s
+    self.height = self.height*s
   end
   object.position = function (arg)
     arg = arg or {}
@@ -157,6 +160,30 @@ M.update = function (dt)
   for _,entity in ipairs(manager.entities) do
     entity.update(dt)
   end
+  for i = 1,#manager.entities do
+    for j = i,#manager.entities do
+      e1 = manager.entities[i]
+      l1 = e1.position().x
+      r1 = e1.position().x + e1.width()
+      t1 = e1.position().y
+      b1 = e1.position().y + e1.height()
+      e2 = manager.entities[j]
+      l2 = e2.position().x
+      r2 = e2.position().x + e2.width()
+      t2 = e2.position().y
+      b2 = e2.position().y + e2.height()
+      if r1 >= l2 and r2 >= l1 and b1 >= t2 and b2 >= t1 then
+        event.notify("entityCollision",{e1,e2})
+        event.notify("entityCollision",{e2,e1})
+      end
+    end
+  end
+  
+  for i,entity in ipairs(manager.entities) do
+    if entity.delete then
+      table.remove(manager.entities,i)
+    end
+  end
 end
 
 M.registerType = function(name, spec)
@@ -196,7 +223,13 @@ M.registerType("tinyworlder", {
     love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
   end
 })
-M.registerType("pill", {
+M.registerType("grower", {
+  render = function (object, self)
+    love.graphics.setColor({255,255,0})
+    love.graphics.circle("fill", self.position.x+self.width/2, self.position.y+self.height/2, self.width/2, 16)
+  end
+})
+M.registerType("shrinker", {
   render = function (object, self)
     love.graphics.setColor({0,255,255})
     love.graphics.circle("fill", self.position.x+self.width/2, self.position.y+self.height/2, self.width/2, 16)

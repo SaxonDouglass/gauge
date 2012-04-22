@@ -82,8 +82,26 @@ return {
         },
         {
           name = "",
-          type = "pill",
+          type = "grower",
           x = 480,
+          y = 352,
+          width = 32,
+          height = 32,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "shrinker",
+          x = 544,
+          y = 352,
+          width = 32,
+          height = 32,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "grower",
+          x = 608,
           y = 352,
           width = 32,
           height = 32,
