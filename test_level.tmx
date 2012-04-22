@@ -15,8 +15,9 @@
  </layer>
  <objectgroup name="objects" width="30" height="20">
   <object type="player_spawn" x="224" y="352" width="32" height="32"/>
-  <object type="grower" x="480" y="352" width="32" height="32"/>
-  <object type="shrinker" x="544" y="352" width="32" height="32"/>
+  <object type="grower" x="544" y="352" width="32" height="32"/>
   <object type="grower" x="608" y="352" width="32" height="32"/>
+  <object type="grower" x="352" y="352" width="32" height="32"/>
+  <object type="grower" x="416" y="352" width="32" height="32"/>
  </objectgroup>
 </map>
