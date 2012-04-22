@@ -77,7 +77,10 @@ M.new = function (arg)
       -- Vertical collisions (slightly dodgy stuff here)
       if self.velocity.y < 0 then
         if collide(map, position.x + 0.1*width, position.y, position.x + 0.9*width, position.y) then
-          self.position.y = (map.getTileBounds(map.getTileIndices(position)).bottom + 0.01*height)/M.scale
+          self.position.y = (map.getTileBounds(map.getTileIndices(position)).bottom + 0.01*height)
+          if self.scaled then
+            self.position.y = self.position.y/M.scale
+          end
           self.velocity.y = 0
           if collide(map, position.x + 0.1*width, position.y + height, position.x + 0.9*width, position.y + height) then
             event.notify("entityStuck",object)
@@ -85,7 +88,10 @@ M.new = function (arg)
         end
       elseif self.velocity.y > 0 then
         if collide(map, position.x + 0.1*width, position.y + height, position.x + 0.9*width, position.y + height) then
-          self.position.y = (map.getTileBounds(map.getTileIndices({x = position.x, y = position.y + height})).top - height)/M.scale
+          self.position.y = (map.getTileBounds(map.getTileIndices({x = position.x, y = position.y + height})).top - height)
+          if self.scaled then
+            self.position.y = self.position.y/M.scale
+          end
           self.velocity.y = 0
           object.falling = false
           if collide(map, position.x + 0.1*width, position.y, position.x + 0.9*width, position.y) then
@@ -99,7 +105,10 @@ M.new = function (arg)
       -- Horizontal collisions
       if self.velocity.x < 0 then
         if collide(map, position.x, position.y, position.x, position.y + height) then
-          self.position.x = (map.getTileBounds(map.getTileIndices(position)).right)/M.scale
+          self.position.x = (map.getTileBounds(map.getTileIndices(position)).right)
+          if self.scaled then
+            self.position.x = self.position.x/M.scale
+          end
           --velocity.x = 0
           if collide(map, position.x + width, position.y, position.x + width, position.y + height) then
             event.notify("entityStuck",object)
@@ -107,7 +116,10 @@ M.new = function (arg)
         end
       elseif self.velocity.x > 0 then
         if collide(map, position.x + width, position.y, position.x + width, position.y + height) then
-          self.position.x = (map.getTileBounds(map.getTileIndices({x = position.x + width, y = position.y})).left - width)/M.scale
+          self.position.x = (map.getTileBounds(map.getTileIndices({x = position.x + width, y = position.y})).left - width)
+          if self.scaled then
+            self.position.x = self.position.x/M.scale
+          end
           --self.velocity.x = 0
           if collide(map, position.x, position.y, position.x, position.y + height) then
             event.notify("entityStuck",object)
