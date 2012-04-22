@@ -73,7 +73,7 @@ return {
       objects = {
         {
           name = "",
-          type = "player",
+          type = "player_spawn",
           x = 224,
           y = 352,
           width = 32,

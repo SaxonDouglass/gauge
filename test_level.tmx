@@ -14,7 +14,7 @@
   </data>
  </layer>
  <objectgroup name="objects" width="30" height="20">
-  <object type="player" x="224" y="352" width="32" height="32"/>
+  <object type="player_spawn" x="224" y="352" width="32" height="32"/>
   <object type="pill" x="480" y="352" width="32" height="32"/>
  </objectgroup>
 </map>

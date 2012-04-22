@@ -15,6 +15,8 @@ M.new = function (arg)
     position = {x = 0, y = 0},
     velocity = {x = 0, y = 0},
     acceleration = {x = 0, y = 0},
+    scale = 1,
+    scales = true,
   }
   
   -- Add type-specific properties and defaults
@@ -48,7 +50,9 @@ M.new = function (arg)
   local object = {}
   object.falling = true
   if self.render then
-    object.render = self.render
+    object.render = function () 
+      self.render(object, self)
+    end
   else
     object.render = function ()
       love.graphics.setColor({0,255,0})
@@ -94,6 +98,19 @@ M.new = function (arg)
     
     if self.update then
       self.update(object, self, dt)
+    end
+  end
+  object.scale = function (s)
+    if self.scales then
+      self.scale = self.scale*s
+      self.position.x = self.position.x*s
+      self.position.y = self.position.y*s
+      self.velocity.x = self.velocity.x*s
+      self.velocity.y = self.velocity.y*s
+      self.acceleration.x = self.acceleration.x*s
+      self.acceleration.y = self.acceleration.y*s
+      self.width = self.width*s
+      self.height = self.height*s
     end
   end
   object.position = function (arg)
@@ -146,6 +163,44 @@ M.registerType = function(name, spec)
   manager.types[name] = spec
 end
 
+M.scale = function(s)
+  for _,entity in ipairs(manager.entities) do
+    entity.scale(s)
+  end
+end
 
+M.getList = function(filter)
+  result = {}
+  for _,entity in ipairs(manager.entities) do
+    local match = true
+    for k,v in pairs(filter) do
+      if not entity[k] == v then
+        match = false
+        break
+      end
+    end
+    if match then
+      table.insert(result, entity)
+    end
+  end
+  return result
+end
+
+M.registerType("player_spawn", {
+  render = function (object, self)
+  end
+})
+M.registerType("tinyworlder", {
+  render = function (object, self)
+    love.graphics.setColor({255,0,0})
+    love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
+  end
+})
+M.registerType("pill", {
+  render = function (object, self)
+    love.graphics.setColor({0,255,255})
+    love.graphics.circle("fill", self.position.x+self.width/2, self.position.y+self.height/2, self.width/2, 16)
+  end
+})
 
 return M

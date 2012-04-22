@@ -1,4 +1,6 @@
 -- map.lua
+local entity = require "entity"
+
 local M = {}
 
 M.new = function(arg)
@@ -45,10 +47,10 @@ M.new = function(arg)
   map.layers[1].data = data
   
   -- entities
-  for _,entity in ipairs(map.layers[objectgroup].objects) do
-    local position = { x = entity.x, y = entity.y }
-    entity.position = position
-    gauge.entity.new(entity)
+  for _,object in ipairs(map.layers[objectgroup].objects) do
+    local position = { x = object.x, y = object.y }
+    object.position = position
+    entity.new(object)
   end
   
   -- render info
