@@ -86,8 +86,8 @@ love.update = function (dt)
     gauge.event.notify("input", input)
   end
   
-  gauge.state.get().update(dt)
   tween.update(dt)
+  gauge.state.get().update(dt)
 end
 
 love.draw = function ()
