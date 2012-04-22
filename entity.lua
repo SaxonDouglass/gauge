@@ -16,7 +16,6 @@ M.new = function (arg)
     velocity = {x = 0, y = 0},
     acceleration = {x = 0, y = 0},
     scale = 1,
-    scales = true,
   }
   
   -- Add type-specific properties and defaults
@@ -101,17 +100,15 @@ M.new = function (arg)
     end
   end
   object.scale = function (s)
-    if self.scales then
-      self.scale = self.scale*s
-      self.position.x = self.position.x*s
-      self.position.y = self.position.y*s
-      self.velocity.x = self.velocity.x*s
-      self.velocity.y = self.velocity.y*s
-      self.acceleration.x = self.acceleration.x*s
-      self.acceleration.y = self.acceleration.y*s
-      self.width = self.width*s
-      self.height = self.height*s
-    end
+    self.scale = self.scale*s
+    self.position.x = self.position.x*s
+    self.position.y = self.position.y*s
+    self.velocity.x = self.velocity.x*s
+    self.velocity.y = self.velocity.y*s
+    self.acceleration.x = self.acceleration.x*s
+    self.acceleration.y = self.acceleration.y*s
+    self.width = self.width*s
+    self.height = self.height*s
   end
   object.position = function (arg)
     arg = arg or {}
