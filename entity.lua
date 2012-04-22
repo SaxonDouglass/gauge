@@ -105,7 +105,7 @@ M.new = function (arg)
       position = object.position()
       -- Horizontal collisions
       if self.velocity.x < 0 then
-        if collide(map, position.x, position.y, position.x, position.y + height) then
+        if collide(map, position.x, position.y, position.x, position.y + height - 1) then
           self.position.x = (map.getTileBounds(map.getTileIndices(position)).right)
           --if self.scaled then
             self.position.x = self.position.x/M.scale
@@ -116,7 +116,7 @@ M.new = function (arg)
           end
         end
       elseif self.velocity.x > 0 then
-        if collide(map, position.x + width, position.y, position.x + width, position.y + height) then
+        if collide(map, position.x + width, position.y, position.x + width, position.y + height - 1) then
           self.position.x = (map.getTileBounds(map.getTileIndices({x = position.x + width, y = position.y})).left - width)
           --if self.scaled then
             self.position.x = self.position.x/M.scale
