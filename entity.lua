@@ -3,14 +3,34 @@ local state = require "state"
 local M = {}
 
 local manager = {
-  entities = {}
+  entities = {},
+  types = {},
 }
 
 M.new = function (arg)
-  local self = arg
+  -- Default properties
+  local self = {
+    width = 30,
+    height = 30,
+    position = {x = 0, y = 0},
+    velocity = {x = 0, y = 0},
+    acceleration = {x = 0, y = 0},
+  }
   
-  self.width = self.width or 30
-  self.height = self.height or 30
+  -- Add type-specific properties and defaults
+  if arg.type then
+    local type = manager.types[arg.type]
+    if type then
+      for k,v in pairs(type) do
+        self[k] = v
+      end
+    end
+  end
+  
+  -- Instance-specific default overrides
+  for k,v in pairs(arg) do
+    self[k] = v
+  end
   
   local collide = function (map, x1, y1, x2, y2)
     local i1 = map.getTileIndices({x = x1, y = y1})
@@ -27,10 +47,13 @@ M.new = function (arg)
   
   local object = {}
   object.falling = true
-  object.render = function ()
-    love.graphics.setColor({0,255,0})
-    love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
-    --love.graphics.circle("fill", self.position.x + self.width/2, self.position.y + self.height/2, self.width/2, 16)
+  if self.render then
+    object.render = self.render
+  else
+    object.render = function ()
+      love.graphics.setColor({0,255,0})
+      love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
+    end
   end
   object.update = function (dt)
     self.velocity.x = self.velocity.x + dt*self.acceleration.x
@@ -67,6 +90,10 @@ M.new = function (arg)
           --self.velocity.x = 0
         end
       end
+    end
+    
+    if self.update then
+      self.update(object, self, dt)
     end
   end
   object.position = function (arg)
@@ -115,7 +142,9 @@ M.update = function (dt)
   end
 end
 
-
+M.registerType = function(name, spec)
+  manager.types[name] = spec
+end
 
 
 
