@@ -9,6 +9,8 @@ gauge.input = require "input"
 gauge.state = require "state"
 gauge.map = require "map"
 
+local tween = require "tween"
+
 love.load = function ()
   local context = gauge.input.context.new({active = true})
   context.map = function (raw_in, map_in)
@@ -71,7 +73,7 @@ love.load = function ()
   end
 
   local untrusted_code = assert(loadfile("game/main.lua"))
-  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, math=math, print=print})
+  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, math=math, print=print, tween=tween})
   trusted_code()
 end
 
@@ -82,6 +84,7 @@ love.update = function (dt)
   end
   
   gauge.state.get().update(dt)
+  tween.update(dt)
 end
 
 love.draw = function ()

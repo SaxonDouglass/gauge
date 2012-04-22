@@ -6,7 +6,6 @@ local M = {}
 M.new = function(arg)
   local map = nil
   _,map = pcall(arg.data)
-  local scale = arg.scale or 1
   local tilelayer = nil
   local objectgroup = nil
 
@@ -84,8 +83,8 @@ M.new = function(arg)
 
   -- getTileIndices(arg)
   object.getTileIndices = function (arg)
-    return {x = math.ceil(arg.x / (map.tilesets[tilelayer].tilewidth * scale)),
-            y = math.ceil(arg.y / (map.tilesets[tilelayer].tileheight * scale))}
+    return {x = math.ceil(arg.x / (map.tilesets[tilelayer].tilewidth * entity.scale)),
+            y = math.ceil(arg.y / (map.tilesets[tilelayer].tileheight * entity.scale))}
   end
 
   -- getTileProperties(arg)
@@ -109,10 +108,10 @@ M.new = function(arg)
   -- getTileBounds(arg)
   object.getTileBounds = function (arg)
     return {
-      top = (arg.y - 1) * (map.tilesets[tilelayer].tileheight * scale),
-      left = (arg.x - 1) * (map.tilesets[tilelayer].tilewidth * scale),
-      bottom = arg.y * (map.tilesets[tilelayer].tileheight * scale),
-      right = arg.x * (map.tilesets[tilelayer].tilewidth * scale)
+      top = (arg.y - 1) * (map.tilesets[tilelayer].tileheight * entity.scale),
+      left = (arg.x - 1) * (map.tilesets[tilelayer].tilewidth * entity.scale),
+      bottom = arg.y * (map.tilesets[tilelayer].tileheight * entity.scale),
+      right = arg.x * (map.tilesets[tilelayer].tilewidth * entity.scale)
     }
   end
   
@@ -122,17 +121,10 @@ M.new = function(arg)
     love.graphics.draw(batch,
       0, 0, -- x, y
       0, -- rotation
-      scale, scale, -- scale_x, scale_y
+      entity.scale, entity.scale, -- scale_x, scale_y
       0, 0, -- origin_x, origin_y
       0, 0 -- shearing_x, shearing_y
     )
-  end
-  
-  -- scale(s)
-  object.scale = function(s)
-    s = s or 1
-    scale = scale * s
-    return scale
   end
   
   return object
