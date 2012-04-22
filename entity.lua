@@ -102,6 +102,7 @@ M.new = function (arg)
         end
       end
       
+      position = object.position()
       -- Horizontal collisions
       if self.velocity.x < 0 then
         if collide(map, position.x, position.y, position.x, position.y + height) then
