@@ -10,7 +10,6 @@ gauge.state = require "state"
 gauge.map = require "map"
 gauge.music = require "music"
 
-
 local tween = require "tween"
 
 love.load = function ()
@@ -80,6 +79,8 @@ love.load = function ()
 end
 
 love.update = function (dt)
+  if dt > 1/60 then dt = 1/60 end
+
   local input = gauge.input.update(dt)
   if input then
     gauge.event.notify("input", input)
