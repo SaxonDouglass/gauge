@@ -99,6 +99,15 @@ return {
           width = 32,
           height = 32,
           properties = {}
+        },
+        {
+          name = "",
+          type = "player",
+          x = 576,
+          y = 1088,
+          width = 30,
+          height = 30,
+          properties = {}
         }
       }
     }
