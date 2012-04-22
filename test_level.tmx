@@ -10,7 +10,7 @@
  </tileset>
  <layer name="main" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYBzFo3gUj+IRjpmheDDby0QjPNBhP4pH8XDEAHlpAnc=
+   eJxjZGBgYBzFo3gUMzDhwMPd7lEMwcxQPJjtxZVOKMUDHfajeBQPRwwAwfkCgw==
   </data>
  </layer>
  <objectgroup name="objects" width="30" height="20">
