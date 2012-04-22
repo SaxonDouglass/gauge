@@ -8,6 +8,8 @@ gauge.entity = require "entity"
 gauge.input = require "input"
 gauge.state = require "state"
 gauge.map = require "map"
+gauge.music = require "music"
+
 
 love.load = function ()
   local context = gauge.input.context.new({active = true})
