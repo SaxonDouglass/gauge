@@ -30,7 +30,6 @@ M.new = function (arg)
   object.render = function ()
     love.graphics.setColor({0,255,0})
     love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
-    --love.graphics.circle("fill", self.position.x + self.width/2, self.position.y + self.height/2, self.width/2, 16)
   end
   object.update = function (dt)
     self.velocity.x = self.velocity.x + dt*self.acceleration.x

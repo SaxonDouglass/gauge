@@ -11,8 +11,7 @@ gauge.map = require "map"
 
 love.load = function ()
   local map = gauge.map.new({
-    data = loadfile("test_level.lua"),
-    scale = 0.5
+    data = loadfile("test_level.lua")
   })
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
