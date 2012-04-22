@@ -186,17 +186,21 @@ M.getList = function(filter)
   return result
 end
 
+M.registerType("player_spawn", {
+  render = function (object, self)
+  end
+})
 M.registerType("tinyworlder", {
-                 render = function (object, self)
-                   love.graphics.setColor({255,0,0})
-                   love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
-                 end
-                       })
+  render = function (object, self)
+    love.graphics.setColor({255,0,0})
+    love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
+  end
+})
 M.registerType("pill", {
-                 render = function (object, self)
-                   love.graphics.setColor({0,255,255})
-                   love.graphics.circle("fill", self.position.x+self.width/2, self.position.y+self.height/2, self.width/2, 16)
-                 end
-                       })
+  render = function (object, self)
+    love.graphics.setColor({0,255,255})
+    love.graphics.circle("fill", self.position.x+self.width/2, self.position.y+self.height/2, self.width/2, 16)
+  end
+})
 
 return M
