@@ -1,10 +1,12 @@
 -- entity.lua
 local state = require "state"
+local event = require "event"
 local M = {}
 
 local manager = {
   entities = {},
   types = {},
+  deleteQueue = {},
 }
 
 M.new = function (arg)
@@ -48,6 +50,7 @@ M.new = function (arg)
   
   local object = {}
   object.falling = true
+  object.delete = false
   if self.render then
     object.render = function () 
       self.render(object, self)
@@ -98,6 +101,9 @@ M.new = function (arg)
     if self.update then
       self.update(object, self, dt)
     end
+  end
+  object.type = function ()
+    return self.type
   end
   object.scale = function (s)
     self.scale = self.scale*s
@@ -153,6 +159,30 @@ end
 M.update = function (dt)
   for _,entity in ipairs(manager.entities) do
     entity.update(dt)
+  end
+  for i = 1,#manager.entities do
+    for j = i,#manager.entities do
+      e1 = manager.entities[i]
+      l1 = e1.position().x
+      r1 = e1.position().x + e1.width()
+      t1 = e1.position().y
+      b1 = e1.position().y + e1.height()
+      e2 = manager.entities[j]
+      l2 = e2.position().x
+      r2 = e2.position().x + e2.width()
+      t2 = e2.position().y
+      b2 = e2.position().y + e2.height()
+      if r1 >= l2 and r2 >= l1 and b1 >= t2 and b2 >= t1 then
+        event.notify("entityCollision",{e1,e2})
+        event.notify("entityCollision",{e2,e1})
+      end
+    end
+  end
+  
+  for i,entity in ipairs(manager.entities) do
+    if entity.delete then
+      table.remove(manager.entities,i)
+    end
   end
 end
 
