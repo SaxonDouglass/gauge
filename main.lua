@@ -10,16 +10,22 @@ gauge.state = require "state"
 gauge.map = require "map"
 
 love.load = function ()
-  local map = gauge.map.new({
-    data = loadfile("test_level.lua")
-  })
+  local map = nil
+  
+  gauge.event.subscribe("loadMap", function (arg)
+    map = gauge.map.new({
+    data = loadfile(arg.file)
+  }))
+
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
   game_state.render = function ()
     love.graphics.translate(
       (love.graphics.getWidth() / 2) - game_state.camera.position.x,
       (love.graphics.getHeight() / 2) - game_state.camera.position.y)
-    map.render()
+    if map then
+      map.render()
+    end
     gauge.entity.render()
   end
   game_state.update = function (dt)
