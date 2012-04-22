@@ -127,6 +127,47 @@ M.new = function(arg)
     )
   end
   
+  -- canContain(arg)
+  object.canContain = function (arg)
+    local small = {
+      top = arg.top,
+      left = arg.left,
+      bottom = arg.bottom,
+      right = arg.right
+    }
+    local size = arg.size
+    local big = {
+      top = arg.top,
+      left = arg.left,
+      bottom = arg.top + size,
+      right = arg.left + size
+    }
+    
+    local max_i = size - (small.right - small.left) + 1
+    local max_j = size - (small.bottom - small.top) + 1
+    for i=1,max_i do
+      for j=1,max_j do
+        local fit = true
+        for y=big.top,big.bottom do
+          for x=big.left,big.right do
+            if object.getTileProperties(x, y).solid then
+              fit = false
+            end
+          end
+        end
+        if fit == true then
+          return true
+        end
+        big.top = big.top + 1
+        big.bottom = big.bottom + 1
+      end
+      big.top = big.top - size + 1
+      big.bottom = big.bottom - size + 1
+      big.left = big.left + 1
+      big.right = big.right + 1
+    end
+  end
+  
   return object
 end
 
