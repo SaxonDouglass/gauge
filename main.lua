@@ -10,12 +10,34 @@ gauge.state = require "state"
 gauge.map = require "map"
 
 love.load = function ()
+  local context = gauge.input.context.new({active = true})
+  context.map = function (raw_in, map_in)
+    if raw_in.key.pressed["escape"] then
+      map_in.actions["quit"] = true
+    end
+    return map_in
+  end
+  gauge.event.subscribe("input",
+    function (input)
+      if input.actions.quit then
+        os.exit(0)
+      end
+    end
+  )
+
+  local modes = love.graphics.getModes()
+  table.sort(modes, function(a, b)
+    return a.width*a.height > b.width*b.height
+  end)
+  local native_mode = modes[1]
+  love.graphics.setMode(native_mode.width, native_mode.height, true)
+
   local map = nil
-  
   gauge.event.subscribe("loadMap", function (arg)
     map = gauge.map.new({
-    data = loadfile(arg.file)
-  }))
+      data = loadfile(arg.file)
+    })
+  end)
 
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
