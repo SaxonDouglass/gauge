@@ -223,7 +223,13 @@ M.registerType("tinyworlder", {
     love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
   end
 })
-M.registerType("pill", {
+M.registerType("grower", {
+  render = function (object, self)
+    love.graphics.setColor({255,255,0})
+    love.graphics.circle("fill", self.position.x+self.width/2, self.position.y+self.height/2, self.width/2, 16)
+  end
+})
+M.registerType("shrinker", {
   render = function (object, self)
     love.graphics.setColor({0,255,255})
     love.graphics.circle("fill", self.position.x+self.width/2, self.position.y+self.height/2, self.width/2, 16)
