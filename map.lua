@@ -3,6 +3,14 @@ local entity = require "entity"
 
 local M = {}
 
+local loadEntities = function (map, objectgroup)
+  for _,object in ipairs(map.layers[objectgroup].objects) do
+    local position = { x = object.x, y = object.y }
+    object.position = position
+    entity.new(object)
+  end
+end
+
 M.new = function(arg)
   local map = nil
   _,map = pcall(arg.data)
@@ -45,12 +53,7 @@ M.new = function(arg)
   end
   map.layers[1].data = data
   
-  -- entities
-  for _,object in ipairs(map.layers[objectgroup].objects) do
-    local position = { x = object.x, y = object.y }
-    object.position = position
-    entity.new(object)
-  end
+  loadEntities(map, objectgroup)
   
   -- render info
   local tileset = {}
@@ -166,6 +169,12 @@ M.new = function(arg)
       big.left = big.left + 1
       big.right = big.right + 1
     end
+  end
+  
+  object.reset = function ()
+    entity.clearAll()
+    loadEntities(map, objectgroup)
+    entity.scale = 1
   end
   
   return object

@@ -61,7 +61,9 @@ love.load = function ()
       y = 0
     },
     speed = 0.02,
-    max_distance = 150
+    max_distance = 150,
+    scale = 1,
+    zoom = false
   }
   gauge.state.push(game_state)
 
@@ -91,6 +93,7 @@ love.update = function (dt)
 end
 
 love.draw = function ()
+  love.graphics.scale(gauge.state.get().camera.scale)
   gauge.state.get().render()
 end
 

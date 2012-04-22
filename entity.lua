@@ -332,4 +332,8 @@ M.registerType("shrinker", {
   end
 })
 
+M.clearAll = function ()
+  manager.entities = {}
+end
+
 return M
