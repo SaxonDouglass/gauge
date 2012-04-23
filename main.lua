@@ -38,10 +38,23 @@ love.load = function ()
   local game_state = gauge.state.new()
   local pause_state = gauge.state.new()
   gauge.event.subscribe("loadMap", function (arg)
-    game_state.map = gauge.map.new({
-      data = loadfile(arg.file)
-    })
-  end )
+    if love.filesystem.exists(arg.file) then
+      game_state.map = gauge.map.new({
+        data = loadfile(arg.file)
+      })
+      gauge.event.notify("input", {
+        actions = {reset = true},
+        states = {},
+        ranges = {}
+      })
+    else
+      gauge.event.notify("input", {
+        actions = {quit = true},
+        states = {},
+        ranges = {}
+      })
+    end
+  end)
   game_state.render = function ()
     love.graphics.translate(
       (love.graphics.getWidth() / 2) - game_state.camera.position.x,

@@ -7,17 +7,20 @@
     <property name="solid" value="true"/>
    </properties>
   </tile>
+  <tile id="2">
+   <properties>
+    <property name="" value=""/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="main" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYBzFo3gUMzDhwMPd7lEMwcxQPJjtxZVOKMUDHfajeBQPRwwAwfkCgw==
+   eJxjZGBgYBzFo3gUj+IRjpmheDDby0QjPNBhP4pH8XDEAHlpAnc=
   </data>
  </layer>
  <objectgroup name="objects" width="30" height="20">
   <object type="player_spawn" x="224" y="352" width="32" height="32"/>
-  <object type="grower" x="544" y="352" width="32" height="32"/>
-  <object type="grower" x="608" y="352" width="32" height="32"/>
-  <object type="grower" x="352" y="352" width="32" height="32"/>
-  <object type="grower" x="416" y="352" width="32" height="32"/>
+  <object type="grower" x="480" y="352" width="32" height="32"/>
+  <object type="door" x="736" y="320" width="64" height="64"/>
  </objectgroup>
 </map>
