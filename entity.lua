@@ -287,6 +287,8 @@ M.getList = function(filter)
   return result
 end
 
+local spritesheet = love.graphics.newImage("entities.png"),
+
 M.registerType("player_spawn", {
   render = function (object, self)
   end
@@ -301,21 +303,23 @@ M.registerType("tinyworlder", {
   end
 })
 M.registerType("grower", {
+  sprite = love.graphics.newQuad(0,0,128,128,512,896),
   render = function (object, self)
     local position = object.position()
     local width = object.width()
     local height = object.height()
-    love.graphics.setColor({255,255,0})
-    love.graphics.circle("fill", position.x+width/2, position.y+height/2, width/2, 16)
+    love.graphics.setColor({255,255,255})
+    love.graphics.drawq(spritesheet, self.sprite, position.x, position.y)
   end
 })
 M.registerType("shrinker", {
+  sprite = love.graphics.newQuad(128,0,128,128,512,896),
   render = function (object, self)
     local position = object.position()
     local width = object.width()
     local height = object.height()
-    love.graphics.setColor({0,255,255})
-    love.graphics.circle("fill", position.x+width/2, position.y+height/2, width/2, 16)
+    love.graphics.setColor({255,255,255})
+    love.graphics.drawq(spritesheet, self.sprite, position.x, position.y)
   end
 })
 
