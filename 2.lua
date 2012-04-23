@@ -299,15 +299,6 @@ return {
           width = 256,
           height = 256,
           properties = {}
-        },
-        {
-          name = "",
-          type = "grower",
-          x = 1408,
-          y = 512,
-          width = 128,
-          height = 128,
-          properties = {}
         }
       }
     }

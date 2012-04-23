@@ -197,6 +197,5 @@
   <object type="player_spawn" x="256" y="512" width="128" height="128"/>
   <object type="grower" x="1664" y="512" width="128" height="128"/>
   <object type="door" x="896" y="384" width="256" height="256"/>
-  <object type="grower" x="1408" y="512" width="128" height="128"/>
  </objectgroup>
 </map>
