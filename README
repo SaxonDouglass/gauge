@@ -1,3 +1,29 @@
++-------+
+| Celia |
++-------+
+Made in 72 hours for Ludum Dare 23.
 
+Installation
+------------
+For Windows, Mac and Linux users:
+    Go to https://love2d.org and get the appropriate version of Love2D
+    for your operating system if you have not already done so.
+    Use Love2D to run Celia.love either by double-clicking the file
+    or from the command line.
+
+How to Play
+-----------
+Left/Right - Move
+Up or Space - Jump
+Enter - Restart Level
+Escape - Quit Game
+
+Credits
+-------
+Programming: Finn Stokes, Saxon Douglass
+Level Design: Jaime von Schwarzburg, Travis Morgan
+Music: Joshua-Douglass Molloy
+Graphics: Colin Capurso
 
 tween.lua is used under the MIT license.
+
