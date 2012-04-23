@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="42" height="40" tilewidth="128" tileheight="128">
+ <properties>
+  <property name="parallax1" value="Background_PlayRoom_Layer1.png"/>
+  <property name="parallax2" value="Background_PlayRoom_Layer2.png"/>
+  <property name="parallax3" value="Background_PlayRoom_Layer3.png"/>
+ </properties>
+ <tileset firstgid="1" name="PlayRoom" tilewidth="128" tileheight="128">
+  <image source="PlayRoom.png" width="768" height="1536"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="50">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="51">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="42" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztl9sOgyAMhtm8wJ280eyULdv7P+UwkaRhRUuBziW9+GOiQD9p4QdrjGmEZDP6cfsqp3Iqp3Iqp3IqZ33OvdMhMS6Hc8tk3EwaGY9Op8qcbWbOLSMuh3MH5mZJGCf3H1P756wFSl3E/pEa9+LUV+QsNZ9Xp9sfcI6Md0a8Tpjz5fQ237WzVG/D9MTixOoxhzM1f5R22B7VzbST4MT8ARtr+DEn1R+w8UtzQi8M90PoD9h3r5qcPkYfxAuVk5sSnNQ1o5y8eN5jOWNJcnqPXRtnKO+x8B12LqaM1SZynqd8UtpDj8X2AqpfNmZ+v8L0cHoy5l8675CTcxeT4oS54tzFpDgxf7Em7n+U2qu53kvO1Vo5w7PdWjnDs10KJ/UuXkIpd/9QH6dWGEc=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="42" height="40">
+  <object type="grower" x="1792" y="4096" width="128" height="128"/>
+  <object type="grower" x="3712" y="3840" width="128" height="128"/>
+  <object type="grower" x="4352" y="4224" width="128" height="128"/>
+  <object type="grower" x="5120" y="3712" width="128" height="128"/>
+  <object type="grower" x="3840" y="1536" width="128" height="128"/>
+  <object type="grower" x="3456" y="4736" width="128" height="128"/>
+  <object type="door" x="2944" y="2688" width="384" height="384"/>
+  <object type="player_spawn" x="3584" y="2944" width="128" height="128"/>
+  <object type="shrinker" x="3712" y="2176" width="128" height="128"/>
+  <object type="grower" x="896" y="2560" width="128" height="128"/>
+  <object type="shrinker" x="1280" y="3200" width="128" height="128"/>
+  <object type="door" x="2432" y="4608" width="384" height="384"/>
+  <object type="grower" x="4224" y="2944" width="128" height="128"/>
+ </objectgroup>
+</map>
