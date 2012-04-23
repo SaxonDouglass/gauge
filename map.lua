@@ -84,6 +84,9 @@ M.new = function(arg)
     end
   end
   
+  -- Parralax
+  --local parralax = love.graphics.newImage("parralax.png")
+  
   object.width = function ()
     return map.width * map.tilewidth
   end
@@ -129,6 +132,13 @@ M.new = function(arg)
   -- render()
   object.render = function ()
     love.graphics.setColor({255,255,255})
+    -- love.graphics.draw(parralax,
+    --   0, 0, -- x, y
+    --   0, -- rotation
+    --   entity.scale, entity.scale, -- scale_x, scale_y
+    --   0, 0, -- origin_x, origin_y
+    --   0, 0 -- shearing_x, shearing_y
+    -- )
     love.graphics.draw(batch,
       0, 0, -- x, y
       0, -- rotation
