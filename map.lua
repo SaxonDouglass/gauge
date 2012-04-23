@@ -30,10 +30,11 @@ M.new = function(arg)
   end
 
   -- map properties
-  for k,v in pairs(map.properties) do
+  --[[for k,v in pairs(map.properties) do
     local property = assert(loadstring(v))
     _,map.properties[k] = pcall("return " .. property)
-  end
+    print(map.properties[k])
+  end]]
   
   -- tileset properties
   for _,tileset in ipairs(map.tilesets) do
@@ -86,9 +87,9 @@ M.new = function(arg)
   end
   
   -- Parralax
-  local parralax1 = love.graphics.newImage("Background_MagicForest_Layer1.png")
-  local parralax2 = love.graphics.newImage("Background_MagicForest_Layer2.png")
-  local parralax3 = love.graphics.newImage("Background_MagicForest_Layer3.png")
+  local parralax1 = love.graphics.newImage(map.properties["parallax1"])
+  local parralax2 = love.graphics.newImage(map.properties["parallax2"])
+  local parralax3 = love.graphics.newImage(map.properties["parallax3"])
   
   object.width = function ()
     return map.width * map.tilewidth
@@ -136,27 +137,39 @@ M.new = function(arg)
   object.render = function ()
     local camera = state.get().camera.position
     love.graphics.setColor({255,255,255})
-    love.graphics.draw(parralax1,
-      camera.x/2, camera.y/2, -- x, y
-      0, -- rotation
-      entity.scale, entity.scale, -- scale_x, scale_y
-      0, 0, -- origin_x, origin_y
-      0, 0 -- shearing_x, shearing_y
-    )
-    love.graphics.draw(parralax2,
-      camera.x*2/3, camera.y*2/3, -- x, y
-      0, -- rotation
-      entity.scale, entity.scale, -- scale_x, scale_y
-      0, 0, -- origin_x, origin_y
-      0, 0 -- shearing_x, shearing_y
-    )
-    love.graphics.draw(parralax3,
-      camera.x*3/4, camera.y*3/4, -- x, y
-      0, -- rotation
-      entity.scale, entity.scale, -- scale_x, scale_y
-      0, 0, -- origin_x, origin_y
-      0, 0 -- shearing_x, shearing_y
-    )
+    local parralax ={
+      parralax1,
+      parralax2,
+      parralax3
+    }
+    for i=1,3 do
+      local x = (1 + (i / 10)) * (camera.x - (native_mode.width / 2))
+      local y = camera.y - (native_mode.height)
+      love.graphics.draw(parralax[i],
+        x, -- x
+        y, -- y
+        0, -- rotation
+        1, 1, -- scale_x, scale_y
+        0, 0, -- origin_x, origin_y
+        0, 0 -- shearing_x, shearing_y
+      )
+      love.graphics.draw(parralax[i],
+        x - parralax[i]:getWidth(), -- x
+        y, -- y
+        0, -- rotation
+        1, 1, -- scale_x, scale_y
+        0, 0, -- origin_x, origin_y
+        0, 0 -- shearing_x, shearing_y
+      )
+      love.graphics.draw(parralax[i],
+        x + parralax[i]:getWidth(), -- x
+        y, -- y
+        0, -- rotation
+        1, 1, -- scale_x, scale_y
+        0, 0, -- origin_x, origin_y
+        0, 0 -- shearing_x, shearing_y
+      )
+    end
     love.graphics.draw(batch,
       0, 0, -- x, y
       0, -- rotation

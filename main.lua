@@ -32,7 +32,7 @@ love.load = function ()
   table.sort(modes, function(a, b)
     return a.width*a.height > b.width*b.height
   end)
-  local native_mode = modes[1]
+  native_mode = modes[1]
   love.graphics.setMode(native_mode.width, native_mode.height, true)
 
   local game_state = gauge.state.new()
@@ -55,6 +55,7 @@ love.load = function ()
     end
   end)
   game_state.render = function ()
+    love.graphics.scale(game_state.camera.scale)
     love.graphics.translate(
       (love.graphics.getWidth() / 2) - game_state.camera.position.x,
       (love.graphics.getHeight() / 2) - game_state.camera.position.y)
@@ -99,7 +100,6 @@ love.update = function (dt)
 end
 
 love.draw = function ()
-  love.graphics.scale(gauge.state.get().camera.scale)
   gauge.state.get().render()
 end
 

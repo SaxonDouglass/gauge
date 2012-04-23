@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="128" tileheight="128">
+ <properties>
+  <property name="parallax1" value="Background_Maze_Layer1.png"/>
+  <property name="parallax2" value="Background_Maze_Layer2.png"/>
+  <property name="parallax3" value="Background_Maze_Layer3.png"/>
+ </properties>
  <tileset firstgid="1" name="default" tilewidth="128" tileheight="128">
   <image source="HedgeMaze.png" width="1152" height="640"/>
   <tile id="15">

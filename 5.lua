@@ -6,7 +6,11 @@ return {
   height = 22,
   tilewidth = 128,
   tileheight = 128,
-  properties = {},
+  properties = {
+    ["parallax1"] = "Background_TeaParty_Layer1.png",
+    ["parallax2"] = "Background_TeaParty_Layer2.png",
+    ["parallax3"] = "Background_TeaParty_Layer3.png"
+  },
   tilesets = {
     {
       name = "TeaParty",
