@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="25" height="22" tilewidth="128" tileheight="128">
+<map version="1.0" orientation="orthogonal" width="16" height="16" tilewidth="128" tileheight="128">
  <properties>
   <property name="parallax1" value="Background_MagicForest_Layer1.png"/>
   <property name="parallax2" value="Background_MagicForest_Layer2.png"/>
@@ -193,15 +193,15 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="25" height="22">
+ <layer name="Tile Layer 1" width="16" height="16">
   <data encoding="base64" compression="zlib">
-   eJwzYKAt0Adig2FkhyENMcgOaxrbYQXEbjS2wxWIA2lsRwAd40MWiEWAWBSIxZDkQeIyaHKiUDFZEuPDGYjFoVgPSR5ZHB3rYTFPF4s6WHxE4nCDHxnhgh72uOJDA4g1ybDDigEzL+DKH+xAzEGGHa4MmHkBW/6AhaklnjDEl04DsdiLLkZpOsUWHzEkmIEt3cCwJZ74gKlxoZE/9JHY/lSwA5s/rJDYUUBsgScskDEuP2NLV65kuheXn7GlqwAq2xHNgJmGosm0g5RwBaU3ANCZW4A=
+   eJwzYMAN9IHYYFSeKHk1IFZHk7cCYmsi9bMCMRuavCsQuxGpXwCIBdHkA4A4kIB+mPuQ9UtB6WggjsGj3wrqPlUk/RZALI6GLXHod4W6jwWH+wmBAKj7+JH0i+BQKwrEYmhi0Vjc6oJDvzMWtSAsgYb9cej3w6IWG45CcqshVC/IT5FE6pcg0p0wDAAQ0RIg
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="25" height="22">
-  <object type="door" x="2560" y="768" width="384" height="384"/>
-  <object type="player_spawn" x="256" y="896" width="128" height="128"/>
-  <object type="grower" x="512" y="1024" width="128" height="128"/>
-  <object type="grower" x="2048" y="2304" width="128" height="128"/>
+ <objectgroup name="Object Layer 1" width="16" height="16">
+  <object type="player_spawn" x="384" y="1408" width="128" height="128"/>
+  <object type="grower" x="256" y="640" width="128" height="128"/>
+  <object type="door" x="1536" y="1280" width="256" height="256"/>
+  <object x="256" y="1536" width="256"/>
  </objectgroup>
 </map>

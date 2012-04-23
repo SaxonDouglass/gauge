@@ -35,6 +35,9 @@ M.new = function(arg)
     _,map.properties[k] = pcall("return " .. property)
     print(map.properties[k])
   end]]
+  object.properties = function ()
+    return map.properties
+  end
   
   -- tileset properties
   for _,tileset in ipairs(map.tilesets) do
@@ -86,10 +89,15 @@ M.new = function(arg)
     end
   end
   
-  -- Parralax
-  local parralax1 = love.graphics.newImage(map.properties["parallax1"])
-  local parralax2 = love.graphics.newImage(map.properties["parallax2"])
-  local parralax3 = love.graphics.newImage(map.properties["parallax3"])
+  -- parallax
+  local parallax ={}
+  for i=1,3 do
+    if map.properties["parallax" .. i] then
+      parallax[i] = love.graphics.newImage(map.properties["parallax" .. i])
+    else
+      break
+    end
+  end
   
   object.width = function ()
     return map.width * map.tilewidth
@@ -137,15 +145,10 @@ M.new = function(arg)
   object.render = function ()
     local camera = state.get().camera.position
     love.graphics.setColor({255,255,255})
-    local parralax ={
-      parralax1,
-      parralax2,
-      parralax3
-    }
-    for i=1,3 do
+    for i=1,#parallax do
       local x = (1 + (i / 10)) * (camera.x - (native_mode.width / 2))
-      local y = camera.y - (native_mode.height)
-      love.graphics.draw(parralax[i],
+      local y = camera.y - (parallax[i]:getHeight() - (native_mode.height / 2))
+      love.graphics.draw(parallax[i],
         x, -- x
         y, -- y
         0, -- rotation
@@ -153,16 +156,16 @@ M.new = function(arg)
         0, 0, -- origin_x, origin_y
         0, 0 -- shearing_x, shearing_y
       )
-      love.graphics.draw(parralax[i],
-        x - parralax[i]:getWidth(), -- x
+      love.graphics.draw(parallax[i],
+        x - parallax[i]:getWidth(), -- x
         y, -- y
         0, -- rotation
         1, 1, -- scale_x, scale_y
         0, 0, -- origin_x, origin_y
         0, 0 -- shearing_x, shearing_y
       )
-      love.graphics.draw(parralax[i],
-        x + parralax[i]:getWidth(), -- x
+      love.graphics.draw(parallax[i],
+        x + parallax[i]:getWidth(), -- x
         y, -- y
         0, -- rotation
         1, 1, -- scale_x, scale_y

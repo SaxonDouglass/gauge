@@ -195,7 +195,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="13" height="6">
   <data encoding="base64" compression="zlib">
-   eJwzYCAN6AOxNYl6rIDYjUQ9rkAcSKKeACCOgbJF0ORkkNiiQCwGZUcDsTgZGAAErgQ+
+   eJwzYCAN6AOxNYl6rIDYjUQ9rkAcSKKeACCOgbJF0OSMkNiiQCwGZUcDsTgZGAALjgRU
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="13" height="6">

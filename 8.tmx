@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="128" tileheight="128">
+ <properties>
+  <property name="parallax1" value="Background_Maze_Layer1.png"/>
+  <property name="parallax2" value="Background_Maze_Layer2.png"/>
+  <property name="parallax3" value="Background_Maze_Layer3.png"/>
+ </properties>
+ <tileset firstgid="1" name="default" tilewidth="128" tileheight="128">
+  <image source="HedgeMaze.png" width="1152" height="640"/>
+  <tile id="15">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 2" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztWYlqwzAMze5kZ9ud0J0QCvn/H5wCM2jCOm33gD4QbWL7ya+1o5ek6+pgUo5bja2No46jjhY46qijY6oYGq9HR0nulvDoiKKvxCPBquPKyEfnvIFY/n3ioOD4e0OfGVYdi8xc8JzSdzpnjndAxxuBH/PRPphD06H1nYQ2iXdlnEMNjlxfbi97dayNc6jBQftS4PXq1TEGx0ocUuC+dO3i9crNxVoLIjqiaFU/onWqNQa9yz94/5+kQ7oOR2sW5sR7irsG4/NRHQuBE1+vKbj6QffKmOGY8/bkWJrnjBOIU4gziPOMDszB7VF6TtrLFsxjlwJ/Lvc1xA3ELcSdgZ8eY60XEJdKXgvw+EHhS22PEE8QzxAvqD23HrS1eQ/xoOS1AI9fKXyp7R3iA+IT4kuYo5ZvxivEm3GslXet8M1t0l606sDXzW+IH+NYjTdhrMBnyVfq4Theqz+tla/Uw3G80d8n4iO8/svjPejvY+Xahgfx6BgNfUpylMC7PiLt+6wj5/FKdFA+ySd6cueA60LyYxYuKQd37557thHJnZsLt68172Op/V54Pbaln+Z9pPq+TzpqeR8PaunAv+l3V8f7eMD5/Mi4XYL6pHTOUxt6Q//WoD4Jn+fuK2nbkum7TVCfRNus3ivq/WqG5pP2HRP5TEh17FCAdeC6nuoYB+3difbMzPruxTp2Yr6nOpaD9G5D8kKe8ZbnapIOWse4dzxepDzJc5Xcv9F5545bIVJXrX1Lnyd6kPJI++ZQ/g/tXaNXx0COdwV6L+nV0eJZVgQ496Lz62jxLCuCkjVOPUhExy+cr1Ut
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="50" height="50">
+  <object type="player_spawn" x="4992" y="1024" width="128" height="128"/>
+  <object type="grower" x="5760" y="2048" width="128" height="128"/>
+  <object type="grower" x="1920" y="2688" width="128" height="128"/>
+  <object type="grower" x="1920" y="1152" width="128" height="128"/>
+  <object type="grower" x="512" y="5248" width="128" height="128"/>
+  <object type="shrinker" x="2560" y="6144" width="128" height="128"/>
+  <object type="door" x="2304" y="3584" width="384" height="512"/>
+  <object type="shrinker" x="2688" y="3968" width="128" height="128"/>
+  <object type="shrinker" x="896" y="2048" width="128" height="128"/>
+ </objectgroup>
+</map>

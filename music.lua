@@ -3,7 +3,9 @@
 local M = {}
 
 M.new = function(arg)
-  local source = love.audio.newSource(arg.file)
+  local static = false
+  if arg.static then static = true end
+  local source = love.audio.newSource(arg.file, static)
 
   if arg.volume then source:setVolume(arg.volume) end
   if arg.loop then source:setLooping(arg.loop) end
