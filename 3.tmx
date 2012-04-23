@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="16" height="10" tilewidth="128" tileheight="128">
+<map version="1.0" orientation="orthogonal" width="16" height="12" tilewidth="128" tileheight="128">
  <tileset firstgid="1" name="default" tilewidth="128" tileheight="128">
   <image source="Magic-Forest.png" width="1408" height="1152"/>
   <tile id="0">
@@ -188,14 +188,14 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="16" height="10">
+ <layer name="Tile Layer 1" width="16" height="12">
   <data encoding="base64" compression="zlib">
-   eJwzYCAf6AOxAZ31iwKxGAn6lYBYGYlvAcTiUIxNvxoQqyPxGYGYCYfZVlj0swIxGxKfB4h5ceh3BWJrIFYBYlWomAAQCxKpPwCI3YCYGYhZSNDvzIAIg0Ag5gNifjT9Imj6kcPdD4gloFicDKyHpB8AUvAImg==
+   eJwzYCAf6AOxwQjTLwrEYiToVwJiZSS+BRCLQzE2/WpArI7EZwRiJhxmW2HRzwrEbEh8HiDmxaHfFYitgVgFiFWhYgJALEik/gAgdgNiZiBmIUG/MwMiDAKBmA+I+dH0i6DpRw53PyCWgGJxMrAekn4AX8YJWA==
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="16" height="10">
-  <object type="player_spawn" x="1280" y="1024" width="128" height="128"/>
-  <object type="grower" x="1664" y="256" width="128" height="128"/>
-  <object type="door" x="1664" y="640" width="256" height="256"/>
+ <objectgroup name="Object Layer 1" width="16" height="12">
+  <object type="player_spawn" x="1280" y="1280" width="128" height="128"/>
+  <object type="grower" x="1664" y="512" width="128" height="128"/>
+  <object type="door" x="1664" y="896" width="256" height="256"/>
  </objectgroup>
 </map>
