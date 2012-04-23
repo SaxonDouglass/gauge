@@ -299,7 +299,7 @@ M.registerType("tinyworlder", {
     local position = object.position()
     local width = object.width()
     local height = object.height()
-    love.graphics.rectangle("fill", position.x, position.y, width, height)
+    love.graphics.rectangle("fill", position.x, position.y, spritesheet:getWidth(), spritesheet:getHeight())
   end
 })
 M.registerType("grower", {
@@ -309,17 +309,40 @@ M.registerType("grower", {
     local width = object.width()
     local height = object.height()
     love.graphics.setColor({255,255,255})
-    love.graphics.drawq(spritesheet, self.sprite, position.x, position.y)
+    love.graphics.drawq(spritesheet, self.sprite, position.x, position.y, 0, width/128, height/128)
   end
 })
 M.registerType("shrinker", {
-  sprite = love.graphics.newQuad(128,0,128,128,512,896),
+  sprite = love.graphics.newQuad(128,0,128,128,spritesheet:getWidth(),spritesheet:getHeight()),
   render = function (object, self)
     local position = object.position()
     local width = object.width()
     local height = object.height()
     love.graphics.setColor({255,255,255})
-    love.graphics.drawq(spritesheet, self.sprite, position.x, position.y)
+    love.graphics.drawq(spritesheet, self.sprite, position.x, position.y, 0, width/128, height/128)
+  end
+})
+M.registerType("door", {
+  render = function (object, self)
+    local position = object.position()
+    local width = object.width()
+    local height = object.height()
+    local sprite = nil
+    if self.width <= 128 then
+      sprite = love.graphics.newQuad(3*128,128,128,128,spritesheet:getWidth(),spritesheet:getHeight())
+      width = width / 128
+      height = height / 128
+    elseif self.width <= 256 then
+      sprite = love.graphics.newQuad(0,128,256,256,spritesheet:getWidth(),spritesheet:getHeight())
+      width = width / 256
+      height = height / 256
+    else
+      sprite = love.graphics.newQuad(0,3*128,512,512,spritesheet:getWidth(),spritesheet:getHeight())
+      width = width / 512
+      height = height / 512
+    end
+    love.graphics.setColor({255,255,255})
+    love.graphics.drawq(spritesheet, sprite, position.x, position.y, 0, width, height)
   end
 })
 
