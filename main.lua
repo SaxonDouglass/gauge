@@ -89,7 +89,7 @@ love.load = function ()
   end
 
   local untrusted_code = assert(loadfile("game/main.lua"))
-  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, math=math, print=print, tween=tween})
+  local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, math=math, print=print, tween=tween, love=love})
   trusted_code()
 end
 
