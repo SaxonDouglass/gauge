@@ -54,6 +54,9 @@ M.new = function (arg)
   object.type = arg.type
   object.falling = true
   object.delete = false
+  object.setAnimation = function (anim, lowPriority)
+    self.setAnimation(object, self, anim, lowPriority)
+  end
   if self.render then
     object.render = function () 
       self.render(object, self)
