@@ -1,5 +1,6 @@
 -- map.lua
 local entity = require "entity"
+local state = require "state"
 
 local M = {}
 
@@ -85,7 +86,9 @@ M.new = function(arg)
   end
   
   -- Parralax
-  --local parralax = love.graphics.newImage("parralax.png")
+  local parralax1 = love.graphics.newImage("Background_MagicForest_Layer1.png")
+  local parralax2 = love.graphics.newImage("Background_MagicForest_Layer2.png")
+  local parralax3 = love.graphics.newImage("Background_MagicForest_Layer3.png")
   
   object.width = function ()
     return map.width * map.tilewidth
@@ -131,14 +134,29 @@ M.new = function(arg)
   
   -- render()
   object.render = function ()
+    local camera = state.get().camera.position
     love.graphics.setColor({255,255,255})
-    -- love.graphics.draw(parralax,
-    --   0, 0, -- x, y
-    --   0, -- rotation
-    --   entity.scale, entity.scale, -- scale_x, scale_y
-    --   0, 0, -- origin_x, origin_y
-    --   0, 0 -- shearing_x, shearing_y
-    -- )
+    love.graphics.draw(parralax1,
+      camera.x/2, camera.y/2, -- x, y
+      0, -- rotation
+      entity.scale, entity.scale, -- scale_x, scale_y
+      0, 0, -- origin_x, origin_y
+      0, 0 -- shearing_x, shearing_y
+    )
+    love.graphics.draw(parralax2,
+      camera.x*2/3, camera.y*2/3, -- x, y
+      0, -- rotation
+      entity.scale, entity.scale, -- scale_x, scale_y
+      0, 0, -- origin_x, origin_y
+      0, 0 -- shearing_x, shearing_y
+    )
+    love.graphics.draw(parralax3,
+      camera.x*3/4, camera.y*3/4, -- x, y
+      0, -- rotation
+      entity.scale, entity.scale, -- scale_x, scale_y
+      0, 0, -- origin_x, origin_y
+      0, 0 -- shearing_x, shearing_y
+    )
     love.graphics.draw(batch,
       0, 0, -- x, y
       0, -- rotation
