@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="16" height="10" tilewidth="128" tileheight="128">
  <tileset firstgid="1" name="default" tilewidth="128" tileheight="128">
-  <image source="tilesetbasic.jpg" width="256" height="256"/>
+  <image source="Magic-Forest.png" width="1408" height="384"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
   <tile id="1">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+  <tile id="25">
    <properties>
     <property name="solid" value="true"/>
    </properties>
@@ -10,11 +55,11 @@
  </tileset>
  <layer name="Tile Layer 1" width="16" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYCQTM0HxUNLPhAUTo4dU+4k1l4lEPdQIP3LCgJB+cjEA8QQAzg==
+   eJyTYCAfSEDxUNIvjoSJ0c8IxExIfEkkjE0/unoeIObFYTY2/ejqidHPDMQsJOhH9z8fEPOToF8CDYuTiJH1AgATqATs
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="16" height="10">
-  <object type="player_spawn" x="896" y="1024" width="128" height="128"/>
+  <object type="player_spawn" x="1280" y="1024" width="128" height="128"/>
   <object type="grower" x="1664" y="256" width="128" height="128"/>
   <object type="door" x="1664" y="640" width="256" height="256"/>
  </objectgroup>
