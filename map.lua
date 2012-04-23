@@ -58,7 +58,7 @@ M.new = function(arg)
   -- render info
   local tileset = {}
   tileset.image = love.graphics.newImage(map.tilesets[1].image)
-  tileset.image:setFilter("nearest", "nearest")
+  tileset.image:setFilter("linear", "linear")
   tileset.quads = {}
   local max_tiles = map.tilesets[tilelayer].tilewidth * map.tilesets[1].tileheight
   local tiles_x = map.tilesets[tilelayer].imagewidth / map.tilesets[1].tilewidth
