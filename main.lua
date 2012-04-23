@@ -101,7 +101,9 @@ love.update = function (dt)
     gauge.event.notify("input", input)
   end
   
-  tween.update(dt)
+  if dt > 0 then
+    tween.update(dt)
+  end
   gauge.state.get().update(dt)
 end
 
