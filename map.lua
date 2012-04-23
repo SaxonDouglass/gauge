@@ -83,6 +83,14 @@ M.new = function(arg)
       end
     end
   end
+  
+  object.width = function ()
+    return map.width * map.tilewidth
+  end
+  
+  object.height = function ()
+    return map.height * map.tileheight
+  end
 
   -- getTileIndices(arg)
   object.getTileIndices = function (arg)
@@ -95,7 +103,7 @@ M.new = function(arg)
     if arg.x < 1 or arg.y < 1 or
         arg.x > map.layers[tilelayer].width or
         arg.y > map.layers[tilelayer].height then
-      return { solid = true }
+      return {}
     end
     local tile_id = map.layers[tilelayer].data[arg.x][arg.y]
     local properties = {}

@@ -73,7 +73,7 @@ love.load = function ()
       x = 0,
       y = 0
     },
-    speed = 0.02,
+    speed = 0.05,
     max_distance = 150,
     scale = 1,
     zoom = false

@@ -148,46 +148,35 @@ M.new = function (arg)
   object.position = function (arg)
     arg = arg or {} 
     if arg.x then
-      --if self.scaled then
         self.position.x = arg.x/M.scale
-      --else
-      --  self.position.x = arg.x
-      --end
     end
     if arg.y then
-      --if self.scaled then
         self.position.y = arg.y/M.scale
-      --else
-      --  self.position.y = arg.y
-      --end
     end
-    --if self.scaled then
-      return {x=self.position.x*M.scale,y=self.position.y*M.scale}
-    --else
-    --  return self.position
-    --end
+    local map = state.get().map
+    if self.position.x < 0 then
+      self.position.x = self.position.x + map.width()
+    end
+    if self.position.x > map.width() then
+      self.position.x = self.position.x - map.width()
+    end
+    if self.position.y < 0 then
+      self.position.y = self.position.y + map.height()
+    end
+    if self.position.y > map.height() then
+      self.position.y = self.position.y - map.height()
+    end
+    return {x=self.position.x*M.scale,y=self.position.y*M.scale}
   end
   object.velocity = function (arg)
     arg = arg or {}
     if arg.x then
-      --if self.scaled then
         self.velocity.x = arg.x/M.scale
-      --else
-      --  self.velocity.x = arg.x
-      --end
     end
     if arg.y then
-      --if self.scaled then
         self.velocity.y = arg.y/M.scale
-      --else
-      --  self.velocity.y = arg.y
-      --end
     end
-    --if self.scaled then
-      return {x=self.velocity.x*M.scale,y=self.velocity.y*M.scale}
-    --else
-    --  return self.velocity
-    --end
+    return {x=self.velocity.x*M.scale,y=self.velocity.y*M.scale}
   end
   object.acceleration = function (arg)
     arg = arg or {}
