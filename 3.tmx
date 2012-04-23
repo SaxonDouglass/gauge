@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="16" height="10" tilewidth="128" tileheight="128">
+ <tileset firstgid="1" name="default" tilewidth="128" tileheight="128">
+  <image source="tilesetbasic.jpg" width="256" height="256"/>
+  <tile id="1">
+   <properties>
+    <property name="solid" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="16" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYCQTM0HxUNLPhAUTo4dU+4k1l4lEPdQIP3LCgJB+cjEA8QQAzg==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="16" height="10">
+  <object type="player_spawn" x="896" y="1024" width="128" height="128"/>
+  <object type="grower" x="1664" y="256" width="128" height="128"/>
+  <object type="door" x="1664" y="640" width="256" height="256"/>
+ </objectgroup>
+</map>

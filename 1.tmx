@@ -10,11 +10,11 @@
  </tileset>
  <layer name="Tile Layer 1" width="13" height="6">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYBwEmJmAPBMePBDuBQA2WABY
+   eJxjYmBgYCQBM0HxcNNDKgYAOfgAZg==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="13" height="6">
-  <object type="player_spawn" x="512" y="256" width="128" height="128"/>
-  <object type="door" x="1024" y="256" width="128" height="128"/>
+  <object type="player_spawn" x="512" y="512" width="128" height="128"/>
+  <object type="door" x="1024" y="512" width="128" height="128"/>
  </objectgroup>
 </map>
