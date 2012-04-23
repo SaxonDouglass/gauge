@@ -4,32 +4,26 @@ return {
   orientation = "orthogonal",
   width = 30,
   height = 20,
-  tilewidth = 32,
-  tileheight = 32,
+  tilewidth = 128,
+  tileheight = 128,
   properties = {},
   tilesets = {
     {
       name = "default",
       firstgid = 1,
-      tilewidth = 32,
-      tileheight = 32,
+      tilewidth = 128,
+      tileheight = 128,
       spacing = 0,
       margin = 0,
       image = "tilesetbasic.jpg",
-      imagewidth = 64,
-      imageheight = 64,
+      imagewidth = 256,
+      imageheight = 256,
       properties = {},
       tiles = {
         {
           id = 1,
           properties = {
             ["solid"] = "true"
-          }
-        },
-        {
-          id = 2,
-          properties = {
-            [""] = ""
           }
         }
       }
@@ -38,7 +32,7 @@ return {
   layers = {
     {
       type = "tilelayer",
-      name = "main",
+      name = "Tile Layer 1",
       x = 0,
       y = 0,
       width = 30,
@@ -55,12 +49,12 @@ return {
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1,
+        1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1,
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -72,63 +66,45 @@ return {
     },
     {
       type = "objectgroup",
-      name = "objects",
+      name = "Object Layer 1",
       visible = true,
       opacity = 1,
       properties = {},
       objects = {
         {
           name = "",
+          type = "",
+          x = 512,
+          y = 1536,
+          width = 128,
+          height = 0,
+          properties = {}
+        },
+        {
+          name = "",
           type = "player_spawn",
-          x = 224,
-          y = 352,
-          width = 32,
-          height = 32,
+          x = 512,
+          y = 1408,
+          width = 128,
+          height = 128,
           properties = {}
         },
         {
           name = "",
           type = "grower",
-          x = 544,
-          y = 352,
-          width = 32,
-          height = 32,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "grower",
-          x = 608,
-          y = 352,
-          width = 32,
-          height = 32,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "grower",
-          x = 352,
-          y = 352,
-          width = 32,
-          height = 32,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "grower",
-          x = 416,
-          y = 352,
-          width = 32,
-          height = 32,
+          x = 1792,
+          y = 1408,
+          width = 128,
+          height = 128,
           properties = {}
         },
         {
           name = "",
           type = "door",
-          x = 736,
-          y = 320,
-          width = 64,
-          height = 64,
+          x = 3072,
+          y = 1280,
+          width = 256,
+          height = 256,
           properties = {}
         }
       }

@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="default" tilewidth="32" tileheight="32">
-  <image source="tilesetbasic.jpg" width="64" height="64"/>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="128" tileheight="128">
+ <tileset firstgid="1" name="default" tilewidth="128" tileheight="128">
+  <image source="tilesetbasic.jpg" width="256" height="256"/>
   <tile id="1">
    <properties>
     <property name="solid" value="true"/>
    </properties>
   </tile>
-  <tile id="2">
-   <properties>
-    <property name="" value=""/>
-   </properties>
-  </tile>
  </tileset>
- <layer name="main" width="30" height="20">
+ <layer name="Tile Layer 1" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYBzFo3gUj+IRjpmheDDby0QjPNBhP4pH8XDEAHlpAnc=
+   eJxjZGBgYBzFo3gUj+JRzMAMxYPRXiYa44EO+1E8iocbBgCAVQJ5
   </data>
  </layer>
- <objectgroup name="objects" width="30" height="20">
-  <object type="player_spawn" x="224" y="352" width="32" height="32"/>
-  <object type="grower" x="480" y="352" width="32" height="32"/>
-  <object type="door" x="736" y="320" width="64" height="64"/>
+ <objectgroup name="Object Layer 1" width="30" height="20">
+  <object x="512" y="1536" width="128"/>
+  <object type="player_spawn" x="512" y="1408" width="128" height="128"/>
+  <object type="grower" x="1792" y="1408" width="128" height="128"/>
+  <object type="door" x="3072" y="1280" width="256" height="256"/>
  </objectgroup>
 </map>
