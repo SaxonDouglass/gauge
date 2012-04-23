@@ -45,13 +45,25 @@ return {
           }
         },
         {
-          id = 13,
+          id = 4,
           properties = {
             ["solid"] = "true"
           }
         },
         {
-          id = 14,
+          id = 5,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 6,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 7,
           properties = {
             ["solid"] = "true"
           }
@@ -79,6 +91,156 @@ return {
           properties = {
             ["solid"] = "true"
           }
+        },
+        {
+          id = 26,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 29,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 30,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 31,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 32,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 44,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 45,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 46,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 47,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 55,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 56,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 57,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 58,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 66,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 67,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 68,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 69,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 77,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 78,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 79,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 80,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 88,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 89,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 90,
+          properties = {
+            ["solid"] = "true"
+          }
+        },
+        {
+          id = 91,
+          properties = {
+            ["solid"] = "true"
+          }
         }
       }
     }
@@ -98,14 +260,14 @@ return {
       data = {
         48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 47,
         48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 47,
-        48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 47,
+        48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 22, 0, 47,
         48, 0, 0, 0, 0, 0, 0, 0, 34, 35, 0, 0, 56, 23, 23, 47,
-        48, 0, 0, 0, 34, 35, 0, 0, 1, 2, 0, 0, 0, 0, 0, 58,
-        48, 0, 0, 0, 1, 2, 0, 0, 12, 13, 0, 0, 0, 0, 0, 69,
-        59, 36, 37, 0, 12, 13, 0, 0, 12, 13, 0, 0, 0, 0, 0, 80,
-        70, 3, 4, 0, 12, 13, 0, 0, 12, 13, 0, 0, 0, 56, 23, 23,
-        81, 14, 15, 0, 12, 13, 0, 0, 12, 13, 0, 0, 0, 0, 27, 0,
-        23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 46, 24
+        48, 0, 0, 0, 38, 39, 0, 0, 1, 2, 0, 0, 0, 0, 0, 58,
+        48, 0, 0, 0, 5, 6, 0, 0, 12, 13, 0, 0, 0, 0, 0, 69,
+        59, 36, 37, 0, 16, 17, 0, 0, 12, 13, 0, 0, 0, 0, 0, 80,
+        70, 3, 4, 0, 16, 17, 0, 0, 12, 13, 0, 0, 0, 67, 23, 23,
+        81, 14, 15, 0, 16, 17, 20, 0, 12, 13, 21, 22, 0, 78, 24, 24,
+        23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 46, 24, 24
       }
     },
     {
