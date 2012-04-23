@@ -36,7 +36,6 @@ love.load = function ()
   love.graphics.setMode(native_mode.width, native_mode.height, true)
 
   local game_state = gauge.state.new()
-  local pause_state = gauge.state.new()
   gauge.event.subscribe("loadMap", function (arg)
     if love.filesystem.exists(arg.file) then
       game_state.map = gauge.map.new({
@@ -79,14 +78,6 @@ love.load = function ()
     zoom = false
   }
   gauge.state.push(game_state)
-
-  local context = gauge.input.context.new({active = true})
-  context.map = function (raw, map)
-    if raw.key.pressed.p then
-      map.actions["pause"] = true
-    end
-    return map
-  end
 
   local untrusted_code = assert(loadfile("game/main.lua"))
   local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, math=math, print=print, tween=tween, love=love})
