@@ -39,7 +39,7 @@ love.load = function ()
   gauge.event.subscribe("loadMap", function (arg)
     if love.filesystem.exists(arg.file) then
       game_state.map = gauge.map.new({
-        data = loadfile(arg.file)
+        data = love.filesystem.load(arg.file)
       })
       gauge.event.notify("input", {
         actions = {reset = true},
@@ -80,7 +80,7 @@ love.load = function ()
   }
   gauge.state.push(game_state)
 
-  local untrusted_code = assert(loadfile("game/main.lua"))
+  local untrusted_code = assert(love.filesystem.load("game/main.lua"))
   local trusted_code = sandbox.new(untrusted_code, {gauge=gauge, math=math, print=print, tween=tween, love=love})
   pcall(trusted_code)
 end
