@@ -62,7 +62,7 @@ M.new = function(arg)
   
   -- render info
   local tileset = {}
-  tileset.image = love.graphics.newImage(map.tilesets[1].image)
+  tileset.image = love.graphics.newImage("game/"..map.tilesets[1].image)
   tileset.image:setFilter("linear", "linear")
   tileset.quads = {}
   local max_tiles = map.tilesets[tilelayer].tilewidth * map.tilesets[1].tileheight
@@ -93,7 +93,7 @@ M.new = function(arg)
   local parallax ={}
   for i=1,3 do
     if map.properties["parallax" .. i] then
-      parallax[i] = love.graphics.newImage(map.properties["parallax" .. i])
+      parallax[i] = love.graphics.newImage("game/"..map.properties["parallax" .. i])
     else
       break
     end

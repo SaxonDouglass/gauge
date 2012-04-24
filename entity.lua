@@ -295,7 +295,7 @@ M.getList = function(filter)
   return result
 end
 
-local spritesheet = love.graphics.newImage("entities.png"),
+local spritesheet = love.graphics.newImage("game/entities.png"),
 
 M.registerType("player_spawn", {
   render = function (object, self)
