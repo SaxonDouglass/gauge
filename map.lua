@@ -88,6 +88,7 @@ M.new = function(arg)
       end
     end
   end
+  local canvas = love.graphics.newCanvas(map.width*map.tilesets[1].tilewidth, map.height*map.tilesets[1].tileheight)
   
   -- parallax
   local parallax ={}
@@ -141,9 +142,24 @@ M.new = function(arg)
     }
   end
   
+  --prerender()
+  object.prerender = function ()
+    canvas:clear()
+    canvas:renderTo(function()
+      love.graphics.setColor({255,255,255})
+      love.graphics.draw(batch,
+        0, 0, -- x, y
+        0, -- rotation
+        1, 1, -- scale_x, scale_y
+        0, 0, -- origin_x, origin_y
+        0, 0 -- shearing_x, shearing_y
+      )
+    end)
+  end
+
   -- render()
   object.render = function ()
-    local camera = state.get().camera.position
+    local camera = state.get().camera.position  
     love.graphics.setColor({255,255,255})
     for i=1,#parallax do
       local x = (1 + (i / 10)) * (camera.x - (native_mode.width / 2))
@@ -173,15 +189,15 @@ M.new = function(arg)
         0, 0 -- shearing_x, shearing_y
       )
     end
-    love.graphics.draw(batch,
+    love.graphics.draw(canvas,
       0, 0, -- x, y
       0, -- rotation
       entity.scale, entity.scale, -- scale_x, scale_y
       0, 0, -- origin_x, origin_y
       0, 0 -- shearing_x, shearing_y
-    )
+    ) 
   end
-  
+
   -- canContain(arg)
   object.canContain = function (arg)
     local small = {
@@ -227,7 +243,10 @@ M.new = function(arg)
     entity.clearAll()
     loadEntities(map, objectgroup)
     entity.scale = 1
+    object.prerender()
   end
+  
+  object.prerender()
   
   return object
 end
