@@ -243,7 +243,6 @@ M.new = function(arg)
     entity.clearAll()
     loadEntities(map, objectgroup)
     entity.scale = 1
-    object.prerender()
   end
   
   object.prerender()
