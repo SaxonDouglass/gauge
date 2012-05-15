@@ -11,6 +11,12 @@ local raw = {
     pressed = {},
     released = {}
   },
+  joystick = {
+    down = {},
+    pressed = {},
+    released = {},
+    axis = {}
+  }
 }
 
 M.context.new = function (arg)
@@ -54,12 +60,28 @@ M.keyReleased = function(key)
   raw.key.released[key] = true
 end
 
+M.joystickPressed = function(joystick, button)
+  raw.joystick.down[button] = true
+  raw.joystick.pressed[button] = true
+end
+
+M.joystickReleased = function(joystick, button)
+  raw.joystick.down[button] = nill
+  raw.joystick.released[button] = true
+end
+
 M.update = function (dt)
   local map = {
     actions = {},
     states = {},
     ranges = {}
   }
+  
+  if love.joystick.getNumJoysticks() > 0 then
+    for i=1,love.joystick.getNumAxes(1) do
+      raw.joystick.axis[i] = love.joystick.getAxis(1, i)
+    end
+  end
 
   for _,context in ipairs(contexts) do
     if context.active() then
@@ -69,6 +91,8 @@ M.update = function (dt)
   
   raw.key.pressed = {}
   raw.key.released = {}
+  raw.joystick.pressed = {}
+  raw.joystick.released = {}
 
   if next(map.actions) == nil and
       next(map.states) == nil and

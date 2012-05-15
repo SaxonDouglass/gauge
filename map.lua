@@ -162,7 +162,7 @@ M.new = function(arg)
     local camera = state.get().camera.position  
     love.graphics.setColor({255,255,255})
     for i=1,#parallax do
-      local x = (1 + (i / 10)) * (camera.x - (native_mode.width / 2))
+      local x = (1 - (i / 10)) * (camera.x - (native_mode.width / 2))
       local y = camera.y - (parallax[i]:getHeight() - (native_mode.height / 2))
       love.graphics.draw(parallax[i],
         x, -- x

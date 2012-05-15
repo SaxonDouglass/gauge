@@ -111,6 +111,14 @@ love.keyreleased = function (key, unicode)
   gauge.input.keyReleased(key)
 end
 
+love.joystickpressed = function (joystick, button)
+  gauge.input.joystickPressed(joystick, button)
+end
+
+love.joystickreleased = function (joystick, button)
+  gauge.input.joystickReleased(joystick, button)
+end
+
 love.focus = function (f)
 
 end
