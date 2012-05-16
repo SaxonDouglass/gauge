@@ -56,13 +56,13 @@ love.load = function ()
   end)
   game_state.render = function ()
     love.graphics.push()
-    love.graphics.scale(game_state.camera.scale)
-    love.graphics.translate(
-      (love.graphics.getWidth() / 2) - game_state.camera.position.x,
-      (love.graphics.getHeight() / 2) - game_state.camera.position.y)
+    --love.graphics.scale(game_state.camera.scale)
     if game_state.map then
       game_state.map.render()
     end
+    love.graphics.translate(
+      (love.graphics.getWidth() / 2) - game_state.camera.position.x,
+      (love.graphics.getHeight() / 2) - game_state.camera.position.y)
     gauge.entity.render()
     love.graphics.pop()
   end

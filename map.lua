@@ -89,6 +89,7 @@ M.new = function(arg)
     end
   end
   local canvas = love.graphics.newCanvas(map.width*map.tilesets[1].tilewidth, map.height*map.tilesets[1].tileheight)
+  canvas:setWrap('repeat','repeat')
   
   -- parallax
   local parallax ={}
@@ -161,18 +162,27 @@ M.new = function(arg)
   object.render = function ()
     local camera = state.get().camera.position  
     love.graphics.setColor({255,255,255})
+    local screen_width = love.graphics.getWidth() --native_mode.width
+    local screen_height = love.graphics.getHeight() --native_mode.height
     for i=1,#parallax do
-      local x = (1 - (i / 10)) * (camera.x - (native_mode.width / 2))
-      local y = camera.y - (parallax[i]:getHeight() - (native_mode.height / 2))
-      love.graphics.draw(parallax[i],
-        x, -- x
-        y, -- y
-        0, -- rotation
-        1, 1, -- scale_x, scale_y
-        0, 0, -- origin_x, origin_y
-        0, 0 -- shearing_x, shearing_y
-      )
-      love.graphics.draw(parallax[i],
+      parallax[i]:setWrap('repeat','repeat')
+      local image = parallax[i]
+      local width = parallax[i]:getWidth()
+      local height = parallax[i]:getHeight()
+      local x = (i / 10) * (camera.x - (screen_width / 2))
+      local y = (height - (screen_height / 2))
+      if x < screen_width and x + width > 0 then
+         love.graphics.drawq(parallax[i],
+            love.graphics.newQuad(x,y,screen_width,screen_height,width*entity.scale,height*entity.scale),
+            0, -- x
+            0, -- y
+            0, -- rotation
+            1, 1, -- scale_x, scale_y
+            0, 0, -- origin_x, origin_y
+            0, 0 -- shearing_x, shearing_y
+          )
+      end
+      --[[love.graphics.draw(parallax[i],
         x - parallax[i]:getWidth(), -- x
         y, -- y
         0, -- rotation
@@ -187,12 +197,14 @@ M.new = function(arg)
         1, 1, -- scale_x, scale_y
         0, 0, -- origin_x, origin_y
         0, 0 -- shearing_x, shearing_y
-      )
+         )]]--
     end
-    love.graphics.draw(canvas,
+    love.graphics.drawq(canvas,
+      love.graphics.newQuad(camera.x - (love.graphics.getWidth() / 2), camera.y - (love.graphics.getHeight() / 2),
+                            screen_width, screen_height, canvas:getWidth()*entity.scale, canvas:getHeight()*entity.scale),
       0, 0, -- x, y
       0, -- rotation
-      entity.scale, entity.scale, -- scale_x, scale_y
+      1, 1, -- scale_x, scale_y
       0, 0, -- origin_x, origin_y
       0, 0 -- shearing_x, shearing_y
     ) 
